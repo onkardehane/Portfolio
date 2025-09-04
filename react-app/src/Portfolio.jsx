@@ -20,7 +20,7 @@ const Portfolio = () => {
   // 1. A direct URL: "https://your-image-url.com/photo.jpg"
   // 2. A local path: "/images/your-photo.jpg" (put image in public/images folder)
   // 3. Base64 encoded image: "data:image/jpeg;base64,..."
-  const YOUR_PHOTO_URL = "/api/placeholder/400/400"; // 👈 REPLACE THIS WITH YOUR PHOTO
+  const YOUR_PHOTO_URL = "/images/onkar-photo.jpg"; // 👈 REPLACE THIS WITH YOUR PHOTO
 
   // INSTRUCTION: To add your resume, replace this URL with your resume PDF URL
   // You can use:
