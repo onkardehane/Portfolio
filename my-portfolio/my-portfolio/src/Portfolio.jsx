@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Download, Github, Linkedin, Mail, Phone, MapPin, ExternalLink, Code, Server, Database, Wrench, Menu, X, Star, Calendar, Clock, Award, Coffee, Users, Briefcase, Target, Zap, TrendingUp, BookOpen, MessageSquare, Layers, Globe, Cpu, Shield, Rocket, Check, ArrowRight, Play, Pause, Sun, Moon } from 'lucide-react';
+import { ChevronDown } from 'lucide-react'; 
 
 const PortfolioInline = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
