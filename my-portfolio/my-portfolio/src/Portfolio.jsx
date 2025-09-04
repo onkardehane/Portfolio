@@ -1,52 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import {  
-ChevronDown,
-  MapPin,
+import { 
+  ChevronDown, 
+  Sun, 
+  Moon, 
+  Menu, 
+  X, 
+  Code, 
+  Download, 
+  Github, 
+  Linkedin, 
+  Mail, 
+  Phone,
   ExternalLink,
+  User,
   Server,
   Database,
-  Wrench,
-  Star,
-  Calendar,
-  Clock,
-  Award,
-  Coffee,
-  Users,
-  Briefcase,
-  Target,
-  Zap,
-  TrendingUp,
-  BookOpen,
-  MessageSquare,
-  Layers,
-  Globe,
-  Cpu,
-  Shield,
-  Rocket,
-  Check,
-  ArrowRight,
-  Play,
-  Pause,
-  Sun,
-  Moon,
-  X,
-  Menu,
-  Code,
-  Download,
-  Github,
-  Linkedin,
-  Mail,
-  Phone,
-  } from 'lucide-react';
+  Settings
+} from 'lucide-react';
 
-const PortfolioInline = () => {
+const Portfolio = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [typingText, setTypingText] = useState('');
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
-
-  const YOUR_PHOTO_URL = "/images/onkar-photo.jpg";
-  const YOUR_RESUME_URL = "/documents/onkar-dehane-resume.pdf";
+  const [isTyping, setIsTyping] = useState(true);
 
   const phrases = [
     "Building Scalable Enterprise Solutions",
@@ -58,33 +35,45 @@ const PortfolioInline = () => {
 
   useEffect(() => {
     let timeout;
-    const typePhrase = () => {
-      const currentPhrase = phrases[currentPhraseIndex];
+    const currentPhrase = phrases[currentPhraseIndex];
+    
+    if (isTyping) {
       if (typingText.length < currentPhrase.length) {
-        setTypingText(currentPhrase.substring(0, typingText.length + 1));
-        timeout = setTimeout(typePhrase, 100);
+        timeout = setTimeout(() => {
+          setTypingText(currentPhrase.substring(0, typingText.length + 1));
+        }, 100);
       } else {
         timeout = setTimeout(() => {
-          setTypingText('');
-          setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
+          setIsTyping(false);
         }, 2000);
       }
-    };
-    typePhrase();
+    } else {
+      if (typingText.length > 0) {
+        timeout = setTimeout(() => {
+          setTypingText(typingText.substring(0, typingText.length - 1));
+        }, 50);
+      } else {
+        setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
+        setIsTyping(true);
+      }
+    }
+    
     return () => clearTimeout(timeout);
-  }, [typingText, currentPhraseIndex, phrases]);
+  }, [typingText, currentPhraseIndex, isTyping, phrases]);
 
   const handleDownloadResume = () => {
-    const link = document.createElement('a');
-    link.href = YOUR_RESUME_URL;
-    link.download = 'Onkar-Dehane-Resume.pdf';
-    link.target = '_blank';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Create a simple resume download (you'll need to add the actual PDF file)
+    alert('Resume download will be available soon! Please contact me directly for now.');
   };
 
-  // Dynamic Styles based on theme
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setMobileMenuOpen(false);
+  };
+
   const styles = {
     container: {
       minHeight: '100vh',
@@ -94,7 +83,6 @@ const PortfolioInline = () => {
       color: isDarkMode ? '#ffffff' : '#1f2937',
       transition: 'all 0.5s ease',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-      overflow: 'hidden'
     },
     nav: {
       position: 'fixed',
@@ -137,9 +125,6 @@ const PortfolioInline = () => {
       transition: 'color 0.3s ease',
       cursor: 'pointer',
       fontSize: '1rem'
-    },
-    navLinkHover: {
-      color: isDarkMode ? '#8b5cf6' : '#3b82f6'
     },
     themeToggle: {
       padding: '0.5rem',
@@ -242,25 +227,6 @@ const PortfolioInline = () => {
       textDecoration: 'none',
       color: isDarkMode ? '#ffffff' : '#1f2937'
     },
-    mobileMenu: {
-      display: mobileMenuOpen ? 'block' : 'none',
-      position: 'absolute',
-      top: '100%',
-      left: 0,
-      right: 0,
-      background: isDarkMode ? '#1e293b' : '#ffffff',
-      borderTop: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
-      padding: '1rem'
-    },
-    mobileNavLink: {
-      display: 'block',
-      padding: '0.75rem 1rem',
-      color: isDarkMode ? '#9ca3af' : '#6b7280',
-      textDecoration: 'none',
-      borderRadius: '0.5rem',
-      marginBottom: '0.5rem',
-      transition: 'background 0.3s ease'
-    },
     section: {
       padding: '5rem 2rem',
       maxWidth: '1200px',
@@ -278,35 +244,95 @@ const PortfolioInline = () => {
       WebkitTextFillColor: 'transparent',
       backgroundClip: 'text'
     },
-    aboutGrid: {
+    skillsGrid: {
       display: 'grid',
-      gridTemplateColumns: window.innerWidth > 768 ? '1fr 2fr' : '1fr',
-      gap: '3rem',
-      alignItems: 'center'
+      gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+      gap: '2rem',
+      marginTop: '3rem'
     },
-    aboutImage: {
-      width: '100%',
-      maxWidth: '400px',
-      height: '400px',
+    skillCard: {
+      background: isDarkMode ? 'rgba(55, 65, 81, 0.5)' : 'rgba(219, 234, 254, 0.3)',
+      padding: '2rem',
+      borderRadius: '20px',
+      transition: 'all 0.3s ease',
+      border: `1px solid ${isDarkMode ? 'rgba(139, 92, 246, 0.2)' : 'rgba(59, 130, 246, 0.2)'}`,
+      textAlign: 'center'
+    },
+    projectsGrid: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+      gap: '2rem',
+      marginTop: '3rem'
+    },
+    projectCard: {
+      background: isDarkMode ? '#374151' : '#ffffff',
       borderRadius: '20px',
       overflow: 'hidden',
-      background: isDarkMode 
-        ? 'linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%)'
-        : 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)',
+      transition: 'all 0.3s ease',
+      border: `1px solid ${isDarkMode ? '#4b5563' : '#e5e7eb'}`,
+      boxShadow: isDarkMode ? '0 4px 6px rgba(0, 0, 0, 0.1)' : '0 4px 6px rgba(0, 0, 0, 0.05)'
+    },
+    projectImage: {
+      height: '200px',
+      background: 'linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      boxShadow: isDarkMode 
-        ? '0 20px 60px rgba(139, 92, 246, 0.2)'
-        : '0 20px 60px rgba(59, 130, 246, 0.2)'
+      fontSize: '3rem',
+      color: 'white'
     },
-    aboutText: {
-      fontSize: '1.125rem',
-      lineHeight: '1.8',
-      color: isDarkMode ? '#d1d5db' : '#4b5563',
-      marginBottom: '1.5rem'
+    contactGrid: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+      gap: '2rem',
+      marginTop: '3rem',
+      textAlign: 'center'
     }
   };
+
+  const skills = [
+    {
+      icon: <Code size={48} />,
+      title: "Frontend Development",
+      skills: ["Angular (Expert)", "React & TypeScript", "HTML5 / CSS3 / Sass", "Responsive Design", "Bootstrap / Material UI"]
+    },
+    {
+      icon: <Server size={48} />,
+      title: "Backend Development", 
+      skills: ["Java / Spring Boot", "REST APIs / Microservices", "Node.js / Express", "Python / Django", "Hibernate / JPA"]
+    },
+    {
+      icon: <Database size={48} />,
+      title: "Database & Cloud",
+      skills: ["PostgreSQL / MySQL", "MongoDB / NoSQL", "AWS / Azure", "Docker / Kubernetes", "CI/CD Pipelines"]
+    },
+    {
+      icon: <Settings size={48} />,
+      title: "Tools & Practices",
+      skills: ["Git / GitHub / GitLab", "Jenkins / CircleCI", "Agile / Scrum", "JIRA / Confluence", "IntelliJ IDEA / VS Code"]
+    }
+  ];
+
+  const projects = [
+    {
+      title: "Event Management Platform",
+      description: "Full-featured platform with automated workflows, secure payment integration, and real-time analytics. Migrated legacy system to Angular, improving performance by 40%.",
+      tech: ["Angular", "Spring Boot", "PostgreSQL", "Stripe API"],
+      icon: "📅"
+    },
+    {
+      title: "Learning Management System", 
+      description: "Enterprise LMS serving 10,000+ users with video streaming, progress tracking, and interactive assessments. Implemented GDPR compliance features.",
+      tech: ["Java", "Spring Boot", "Angular", "AWS"],
+      icon: "🎓"
+    },
+    {
+      title: "Real-time Chat Application",
+      description: "WebSocket-based chat with video calling, file sharing, and end-to-end encryption. Supports 1000+ concurrent users with minimal latency.",
+      tech: ["Node.js", "Socket.io", "React", "MongoDB"],
+      icon: "💬"
+    }
+  ];
 
   return (
     <div style={styles.container}>
@@ -317,49 +343,60 @@ const PortfolioInline = () => {
           
           <div style={{ display: 'flex', alignItems: 'center' }}>
             {/* Desktop Navigation */}
-            {window.innerWidth > 768 && (
-              <div style={styles.navLinks}>
-                <a href="#home" style={styles.navLink}>Home</a>
-                <a href="#about" style={styles.navLink}>About</a>
-                <a href="#skills" style={styles.navLink}>Skills</a>
-                <a href="#projects" style={styles.navLink}>Projects</a>
-                <a href="#contact" style={styles.navLink}>Contact</a>
-              </div>
-            )}
+            <div style={{ ...styles.navLinks, display: window.innerWidth > 768 ? 'flex' : 'none' }}>
+              <span onClick={() => scrollToSection('home')} style={styles.navLink}>Home</span>
+              <span onClick={() => scrollToSection('about')} style={styles.navLink}>About</span>
+              <span onClick={() => scrollToSection('skills')} style={styles.navLink}>Skills</span>
+              <span onClick={() => scrollToSection('projects')} style={styles.navLink}>Projects</span>
+              <span onClick={() => scrollToSection('contact')} style={styles.navLink}>Contact</span>
+            </div>
             
-            {/* Theme Toggle Button - NOW VISIBLE! */}
+            {/* Theme Toggle */}
             <button 
               onClick={() => setIsDarkMode(!isDarkMode)} 
               style={styles.themeToggle}
               aria-label="Toggle theme"
             >
-              {isDarkMode ? 
-                <Sun size={20} color="#fbbf24" /> : 
-                <Moon size={20} color="#6b7280" />
-              }
+              {isDarkMode ? <Sun size={20} color="#fbbf24" /> : <Moon size={20} color="#6b7280" />}
             </button>
             
             {/* Mobile Menu Toggle */}
-            {window.innerWidth <= 768 && (
-              <button 
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                style={{ ...styles.themeToggle, marginLeft: '0.5rem' }}
-                aria-label="Toggle mobile menu"
-              >
-                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            )}
+            <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              style={{ ...styles.themeToggle, marginLeft: '0.5rem', display: window.innerWidth <= 768 ? 'flex' : 'none' }}
+              aria-label="Toggle mobile menu"
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
         
         {/* Mobile Menu */}
-        {mobileMenuOpen && window.innerWidth <= 768 && (
-          <div style={styles.mobileMenu}>
-            <a href="#home" style={styles.mobileNavLink}>Home</a>
-            <a href="#about" style={styles.mobileNavLink}>About</a>
-            <a href="#skills" style={styles.mobileNavLink}>Skills</a>
-            <a href="#projects" style={styles.mobileNavLink}>Projects</a>
-            <a href="#contact" style={styles.mobileNavLink}>Contact</a>
+        {mobileMenuOpen && (
+          <div style={{
+            position: 'absolute',
+            top: '100%',
+            left: 0,
+            right: 0,
+            background: isDarkMode ? '#1e293b' : '#ffffff',
+            borderTop: `1px solid ${isDarkMode ? '#374151' : '#e5e7eb'}`,
+            padding: '1rem'
+          }}>
+            {['home', 'about', 'skills', 'projects', 'contact'].map((section) => (
+              <div 
+                key={section}
+                onClick={() => scrollToSection(section)}
+                style={{
+                  padding: '0.75rem 1rem',
+                  cursor: 'pointer',
+                  borderRadius: '0.5rem',
+                  marginBottom: '0.5rem',
+                  textTransform: 'capitalize'
+                }}
+              >
+                {section}
+              </div>
+            ))}
           </div>
         )}
       </nav>
@@ -373,9 +410,12 @@ const PortfolioInline = () => {
         </div>
         
         <div style={styles.buttonContainer}>
-          <a href="#projects" style={{ ...styles.button, ...styles.primaryButton }}>
+          <button 
+            onClick={() => scrollToSection('projects')} 
+            style={{ ...styles.button, ...styles.primaryButton }}
+          >
             <Code size={20} /> View Projects
-          </a>
+          </button>
           <button 
             onClick={handleDownloadResume}
             style={{ ...styles.button, ...styles.outlineButton }}
@@ -403,69 +443,210 @@ const PortfolioInline = () => {
       {/* About Section */}
       <section id="about" style={styles.section}>
         <h2 style={styles.sectionTitle}>About Me</h2>
-        <div style={styles.aboutGrid}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: window.innerWidth > 768 ? '1fr 2fr' : '1fr',
+          gap: '3rem',
+          alignItems: 'center'
+        }}>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            {YOUR_PHOTO_URL && YOUR_PHOTO_URL !== "/api/placeholder/400/400" ? (
-              <img 
-                src={YOUR_PHOTO_URL} 
-                alt="Onkar Dehane"
-                style={{ ...styles.aboutImage, objectFit: 'cover' }}
-              />
-            ) : (
-              <div style={styles.aboutImage}>
-                <span style={{ fontSize: '6rem' }}>👨‍💻</span>
-              </div>
-            )}
+            <div style={{
+              width: '300px',
+              height: '300px',
+              borderRadius: '20px',
+              background: 'linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '6rem'
+            }}>
+              👨‍💻
+            </div>
           </div>
           
           <div>
-            <p style={styles.aboutText}>
+            <p style={{
+              fontSize: '1.125rem',
+              lineHeight: '1.8',
+              color: isDarkMode ? '#d1d5db' : '#4b5563',
+              marginBottom: '1.5rem'
+            }}>
               I'm a passionate Full-Stack Developer with <strong style={{ color: isDarkMode ? '#8b5cf6' : '#3b82f6' }}>5+ years of experience</strong> building 
               enterprise-grade applications. My expertise spans from creating intuitive user interfaces to architecting 
               robust backend systems that scale.
             </p>
-            <p style={styles.aboutText}>
+            <p style={{
+              fontSize: '1.125rem',
+              lineHeight: '1.8',
+              color: isDarkMode ? '#d1d5db' : '#4b5563',
+              marginBottom: '1.5rem'
+            }}>
               Specialized in <strong style={{ color: isDarkMode ? '#8b5cf6' : '#3b82f6' }}>Java Spring Boot</strong> and <strong style={{ color: isDarkMode ? '#8b5cf6' : '#3b82f6' }}>Angular</strong>, 
               I've delivered solutions for companies like <strong style={{ color: isDarkMode ? '#8b5cf6' : '#3b82f6' }}>IMC AG</strong> and <strong style={{ color: isDarkMode ? '#8b5cf6' : '#3b82f6' }}>SAP</strong>, 
               focusing on performance optimization, cloud deployment, and GDPR compliance.
             </p>
-            
-            {/* Stats Grid */}
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(2, 1fr)', 
-              gap: '1rem',
-              marginTop: '2rem'
-            }}>
-              {[
-                { number: '5+', label: 'Years Experience' },
-                { number: '20+', label: 'Projects Delivered' },
-                { number: '100K+', label: 'Users Served' },
-                { number: '15+', label: 'Technologies' }
-              ].map((stat, index) => (
-                <div key={index} style={{
-                  background: isDarkMode ? 'rgba(55, 65, 81, 0.5)' : 'rgba(219, 234, 254, 0.5)',
-                  padding: '1rem',
-                  borderRadius: '12px',
-                  textAlign: 'center'
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section id="skills" style={styles.section}>
+        <h2 style={styles.sectionTitle}>Technical Expertise</h2>
+        <div style={styles.skillsGrid}>
+          {skills.map((skill, index) => (
+            <div key={index} style={styles.skillCard}>
+              <div style={{ 
+                color: isDarkMode ? '#8b5cf6' : '#3b82f6',
+                marginBottom: '1rem'
+              }}>
+                {skill.icon}
+              </div>
+              <h3 style={{ 
+                fontSize: '1.25rem',
+                fontWeight: '600',
+                marginBottom: '1rem'
+              }}>
+                {skill.title}
+              </h3>
+              <ul style={{ listStyle: 'none', padding: 0 }}>
+                {skill.skills.map((item, idx) => (
+                  <li key={idx} style={{
+                    padding: '0.25rem 0',
+                    color: isDarkMode ? '#9ca3af' : '#6b7280'
+                  }}>
+                    ▹ {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" style={styles.section}>
+        <h2 style={styles.sectionTitle}>Featured Projects</h2>
+        <div style={styles.projectsGrid}>
+          {projects.map((project, index) => (
+            <div key={index} style={styles.projectCard}>
+              <div style={styles.projectImage}>
+                <span style={{ fontSize: '4rem' }}>{project.icon}</span>
+              </div>
+              <div style={{ padding: '2rem' }}>
+                <h3 style={{
+                  fontSize: '1.5rem',
+                  fontWeight: '600',
+                  marginBottom: '1rem'
                 }}>
-                  <div style={{ 
-                    fontSize: '1.875rem', 
-                    fontWeight: 'bold',
-                    color: isDarkMode ? '#8b5cf6' : '#3b82f6'
-                  }}>{stat.number}</div>
-                  <div style={{ 
-                    color: isDarkMode ? '#9ca3af' : '#6b7280',
-                    fontSize: '0.875rem'
-                  }}>{stat.label}</div>
+                  {project.title}
+                </h3>
+                <p style={{
+                  color: isDarkMode ? '#9ca3af' : '#6b7280',
+                  marginBottom: '1.5rem',
+                  lineHeight: '1.6'
+                }}>
+                  {project.description}
+                </p>
+                <div style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '0.5rem'
+                }}>
+                  {project.tech.map((tech, idx) => (
+                    <span key={idx} style={{
+                      background: isDarkMode ? 'rgba(139, 92, 246, 0.2)' : 'rgba(59, 130, 246, 0.1)',
+                      color: isDarkMode ? '#a78bfa' : '#3b82f6',
+                      padding: '0.25rem 0.75rem',
+                      borderRadius: '20px',
+                      fontSize: '0.875rem'
+                    }}>
+                      {tech}
+                    </span>
+                  ))}
                 </div>
-              ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" style={styles.section}>
+        <h2 style={styles.sectionTitle}>Let's Connect</h2>
+        <div style={{ textAlign: 'center' }}>
+          <p style={{
+            fontSize: '1.2rem',
+            marginBottom: '2rem',
+            color: isDarkMode ? '#d1d5db' : '#4b5563'
+          }}>
+            I'm always interested in discussing new opportunities and challenging projects. Feel free to reach out!
+          </p>
+          <div style={styles.contactGrid}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+              <div style={{
+                width: '60px',
+                height: '60px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'white'
+              }}>
+                <Mail size={24} />
+              </div>
+              <h3>Email</h3>
+              <a href="mailto:onkar.dehane24@gmail.com" style={{
+                color: isDarkMode ? '#8b5cf6' : '#3b82f6',
+                textDecoration: 'none'
+              }}>
+                onkar.dehane24@gmail.com
+              </a>
+            </div>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+              <div style={{
+                width: '60px',
+                height: '60px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'white'
+              }}>
+                <Phone size={24} />
+              </div>
+              <h3>Phone</h3>
+              <a href="tel:+4915225457768" style={{
+                color: isDarkMode ? '#8b5cf6' : '#3b82f6',
+                textDecoration: 'none'
+              }}>
+                +49 152 2545 7768
+              </a>
+            </div>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+              <div style={{
+                width: '60px',
+                height: '60px',
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'white'
+              }}>
+                🌍
+              </div>
+              <h3>Location</h3>
+              <span>Germany</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Add CSS for animations */}
+      {/* CSS Animations */}
       <style>{`
         @keyframes blink {
           0%, 50% { opacity: 1; }
@@ -482,16 +663,23 @@ const PortfolioInline = () => {
           overflow-x: hidden;
         }
         
-        a:hover {
-          opacity: 0.8;
+        button:hover, a:hover {
+          transform: translateY(-2px);
+          opacity: 0.9;
         }
         
-        button:hover {
-          transform: translateY(-2px);
+        ${styles.skillCard}:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+        }
+        
+        ${styles.projectCard}:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
         }
       `}</style>
     </div>
   );
 };
 
-export default PortfolioInline;
+export default Portfolio;
