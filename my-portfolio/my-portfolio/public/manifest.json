@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Onkar Portfolio",
+  "name": "Onkar Dehane - Senior Full-Stack Developer Portfolio",
+  "description": "Professional portfolio showcasing enterprise-grade applications and technical expertise",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,18 +9,21 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "assets/icons/icon-192x192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "maskable"
     },
     {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "assets/icons/icon-512x512.png",
+      "type": "image/png", 
+      "sizes": "512x512",
+      "purpose": "any"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#8b5cf6",
+  "background_color": "#0f172a",
+  "orientation": "portrait-primary"
 }
