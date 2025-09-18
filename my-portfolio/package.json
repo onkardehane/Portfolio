@@ -28,7 +28,7 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-helmet-async": "^2.0.5",
-    "react-scripts": "^0.0.0",
+    "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -75,7 +75,11 @@
     "tailwindcss": "^3.4.1"
   },
   "engines": {
-    "node": "22.x",
-    "npm": "10.x"
-  }
+  "node": "22.x",
+  "npm": "10.x"
+  },
+  "overrides": {
+  "ajv": "^8.12.0"
+}
+
 }
