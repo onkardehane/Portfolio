@@ -1,85 +1,34 @@
 {
   "name": "onkar-dehane-portfolio",
   "version": "2.0.0",
-  "description": "Professional Full-Stack Developer Portfolio - Onkar Dehane",
-  "homepage": "https://onkardehane.github.io/portfolio",
   "private": true,
-  "author": {
-    "name": "Onkar Dehane",
-    "email": "onkar.dehane24@gmail.com",
-    "url": "https://linkedin.com/in/onkar-dehane-5a9631136"
+  "engines": {
+    "node": "22.x",
+    "npm": "10.x"
   },
-  "keywords": [
-    "portfolio",
-    "full-stack-developer",
-    "react",
-    "angular",
-    "java",
-    "spring-boot",
-    "web-developer"
-  ],
   "dependencies": {
-    "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.8.0",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "ajv": "^6.12.6",
-    "lucide-react": "^0.542.0",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-helmet-async": "^2.0.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
+    "lucide-react": "^0.263.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "analyze": "npm run build && npx source-map-explorer 'build/static/js/*.js'",
-    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
-    "format:check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
-    "test:coverage": "npm test -- --coverage --watchAll=false",
-    "test:ci": "CI=true npm test -- --coverage --watchAll=false"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "extends": ["react-app", "react-app/jest"]
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
   },
   "devDependencies": {
-    "@tailwindcss/forms": "^0.5.7",
-    "@tailwindcss/typography": "^0.5.10",
-    "autoprefixer": "^10.4.21",
-    "eslint": "^8.56.0",
-    "gh-pages": "^6.3.0",
-    "postcss": "^8.5.6",
-    "prettier": "^3.1.1",
-    "tailwindcss": "^3.4.1"
-  },
-  "engines": {
-  "node": "22.x",
-  "npm": "10.x"
-  },
-  "overrides": {
-  "ajv": "^8.12.0"
-}
-
+    "tailwindcss": "^3.4.3",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38"
+  }
 }

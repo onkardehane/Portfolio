@@ -1,6 +1,6 @@
 import React from 'react';
 import Portfolio from './Portfolio';
-import './index.css';
+import './styles/globals.css';
 
 function App() {
   return <Portfolio />;
