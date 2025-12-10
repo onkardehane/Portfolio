@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Sun, 
-  Moon, 
-  Menu, 
-  X, 
-  Code, 
-  Download, 
-  Github, 
-  Linkedin, 
-  Mail, 
+import {
+  Sun,
+  Moon,
+  Menu,
+  X,
+  Code,
+  Download,
+  Github,
+  Linkedin,
+  Mail,
   Phone,
   Server,
   Database,
@@ -56,7 +56,7 @@ const Portfolio = () => {
   useEffect(() => {
     let timeout;
     const currentPhrase = TYPING_PHRASES[currentPhraseIndex];
-    
+
     if (isTyping) {
       if (typingText.length < currentPhrase.length) {
         timeout = setTimeout(() => {
@@ -77,7 +77,7 @@ const Portfolio = () => {
         setIsTyping(true);
       }
     }
-    
+
     return () => clearTimeout(timeout);
   }, [typingText, currentPhraseIndex, isTyping]);
 
@@ -86,7 +86,7 @@ const Portfolio = () => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'skills', 'projects', 'experience', 'contact'];
       const scrollPosition = window.scrollY + 100;
-      
+
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -152,21 +152,21 @@ Visit: https://github.com/onkardehane`;
     dark: isDarkMode ? '#0f172a' : '#ffffff',
     darkLight: isDarkMode ? '#1e293b' : '#f8fbff',
     gray: isDarkMode ? '#64748b' : '#64748b',
-    light: isDarkMode ? '#f8fafc' : '#1e293b',
-    background: isDarkMode 
-      ? 'linear-gradient(180deg, #0f172a 0%, #1e293b 100%)' 
+    light: isDarkMode ? '#e2e8f0' : '#1e293b',
+    background: isDarkMode
+      ? 'linear-gradient(180deg, #0f172a 0%, #1e293b 100%)'
       : 'linear-gradient(180deg, #ffffff 0%, #fafbff 100%)',
     cardBg: isDarkMode ? '#1e293b' : 'rgba(255, 255, 255, 0.95)',
     border: isDarkMode ? 'rgba(139, 92, 246, 0.2)' : 'rgba(99, 102, 241, 0.08)',
-    navBg: isDarkMode 
-      ? 'rgba(15, 23, 42, 0.95)' 
+    navBg: isDarkMode
+      ? 'rgba(15, 23, 42, 0.95)'
       : 'rgba(255, 255, 255, 0.85)',
     textSecondary: isDarkMode ? '#9ca3af' : '#475569',
-    shadow: isDarkMode 
-      ? '0 20px 60px rgba(139, 92, 246, 0.3)' 
+    shadow: isDarkMode
+      ? '0 20px 60px rgba(139, 92, 246, 0.3)'
       : '0 20px 60px rgba(99, 102, 241, 0.08)',
-    gradientText: isDarkMode 
-      ? 'linear-gradient(135deg, #a78bfa, #06b6d4)' 
+    gradientText: isDarkMode
+      ? 'linear-gradient(135deg, #a78bfa, #06b6d4)'
       : 'linear-gradient(135deg, #6366f1, #ec4899)',
     heroGradient: isDarkMode
       ? 'radial-gradient(circle at 30% 107%, #7c3aed 0%, #0f172a 60%)'
@@ -221,7 +221,7 @@ Visit: https://github.com/onkardehane`;
       emoji: '📅'
     },
     {
-      title: "Learning Management System", 
+      title: "Learning Management System",
       description: "Enterprise LMS serving 10,000+ users with video streaming, progress tracking, and interactive assessments. Implemented GDPR compliance features.",
       tech: ["Java", "Spring Boot", "Angular", "AWS"],
       icon: <GraduationCap size={48} />,
@@ -304,31 +304,22 @@ Visit: https://github.com/onkardehane`;
     }
   ];
 
-  // Profile Image Component with Creative Design
+  // Profile Image Component with actual photo
   const ProfileImage = () => (
-    <div style={{
-      width: '100%',
-      height: '100%',
-      background: isDarkMode 
-        ? 'linear-gradient(135deg, #667eea, #764ba2)' 
-        : 'linear-gradient(135deg, #6366f1, #ec4899)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontSize: '4rem',
-      fontWeight: 'bold',
-      color: 'white',
-      letterSpacing: '2px',
-      position: 'relative'
-    }}>
-      <Sparkles size={30} style={{ position: 'absolute', top: '20%', left: '20%', opacity: 0.6 }} />
-      <span>OD</span>
-      <Sparkles size={20} style={{ position: 'absolute', bottom: '20%', right: '20%', opacity: 0.6 }} />
-    </div>
+    <img
+      src="/profile-photo.jpg"
+      alt="Onkar Dehane - Senior Full-Stack Developer"
+      style={{
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        objectPosition: '55% 20%'
+      }}
+    />
   );
 
   return (
-    <div style={{ 
+    <div style={{
       minHeight: '100vh',
       background: colors.background,
       color: colors.light,
@@ -397,9 +388,11 @@ Visit: https://github.com/onkardehane`;
           <div style={{
             fontSize: '1.75rem',
             fontWeight: '800',
-            background: colors.gradientText,
+            backgroundImage: colors.gradientText,
             WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
+            color: isDarkMode ? '#a78bfa' : '#6366f1',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
@@ -408,24 +401,24 @@ Visit: https://github.com/onkardehane`;
             <Code size={28} />
             OD<span style={{ color: colors.accent, fontSize: '2rem' }}>.</span>
           </div>
-          
+
           <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
-            <ul style={{ 
-              display: window.innerWidth > 768 ? 'flex' : 'none', 
-              gap: '2rem', 
-              listStyle: 'none', 
-              margin: 0, 
-              padding: 0 
+            <ul style={{
+              display: window.innerWidth > 768 ? 'flex' : 'none',
+              gap: '2rem',
+              listStyle: 'none',
+              margin: 0,
+              padding: 0
             }}>
               {['home', 'about', 'skills', 'projects', 'experience', 'contact'].map(section => (
                 <li key={section}>
-                  <a 
-                    onClick={() => scrollToSection(section)} 
-                    style={{ 
-                      color: activeSection === section ? colors.primary : colors.textSecondary, 
-                      textDecoration: 'none', 
-                      cursor: 'pointer', 
-                      transition: 'all 0.3s ease', 
+                  <a
+                    onClick={() => scrollToSection(section)}
+                    style={{
+                      color: activeSection === section ? colors.primary : colors.textSecondary,
+                      textDecoration: 'none',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease',
                       fontWeight: activeSection === section ? '600' : '500',
                       fontSize: '0.95rem',
                       textTransform: 'capitalize',
@@ -450,15 +443,15 @@ Visit: https://github.com/onkardehane`;
                 </li>
               ))}
             </ul>
-            
+
             {/* Theme Toggle with Animation */}
-            <button 
+            <button
               onClick={() => setIsDarkMode(!isDarkMode)}
               style={{
                 padding: '0.6rem',
                 borderRadius: '12px',
-                background: isDarkMode 
-                  ? 'linear-gradient(135deg, #1e293b, #334155)' 
+                background: isDarkMode
+                  ? 'linear-gradient(135deg, #1e293b, #334155)'
                   : 'linear-gradient(135deg, #fff3cd, #ffe4a1)',
                 border: `1px solid ${colors.border}`,
                 cursor: 'pointer',
@@ -467,8 +460,8 @@ Visit: https://github.com/onkardehane`;
                 justifyContent: 'center',
                 transition: 'all 0.3s ease',
                 color: isDarkMode ? '#fbbf24' : '#f59e0b',
-                boxShadow: isDarkMode 
-                  ? '0 2px 8px rgba(139, 92, 246, 0.2)' 
+                boxShadow: isDarkMode
+                  ? '0 2px 8px rgba(139, 92, 246, 0.2)'
                   : '0 2px 8px rgba(251, 191, 36, 0.15)',
                 transform: 'scale(1)'
               }}
@@ -483,10 +476,10 @@ Visit: https://github.com/onkardehane`;
       </nav>
 
       {/* Hero Section with Creative Animations */}
-      <section id="home" style={{ 
-        minHeight: '100vh', 
-        display: 'flex', 
-        alignItems: 'center', 
+      <section id="home" style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
         background: colors.heroGradient,
@@ -506,7 +499,7 @@ Visit: https://github.com/onkardehane`;
               opacity: 0.1,
               animation: 'morph 8s ease-in-out infinite'
             }} />
-            
+
             <div style={{
               position: 'absolute',
               bottom: '15%',
@@ -544,8 +537,8 @@ Visit: https://github.com/onkardehane`;
               background: colors.gradientText,
               padding: '4px',
               marginBottom: '1rem',
-              boxShadow: isDarkMode 
-                ? '0 20px 60px rgba(139, 92, 246, 0.4)' 
+              boxShadow: isDarkMode
+                ? '0 20px 60px rgba(139, 92, 246, 0.4)'
                 : '0 20px 60px rgba(99, 102, 241, 0.15)',
               position: 'relative',
               animation: 'pulse 3s ease-in-out infinite'
@@ -576,51 +569,54 @@ Visit: https://github.com/onkardehane`;
             </div>
           </div>
 
-          <h1 style={{ 
-            fontSize: 'clamp(3rem, 8vw, 5rem)', 
+          <h1 style={{
+            fontSize: 'clamp(3rem, 8vw, 5rem)',
             fontWeight: '800',
             marginBottom: '1rem',
-            background: colors.gradientText,
+            backgroundImage: colors.gradientText,
             WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            letterSpacing: '-2px',
-            textShadow: isDarkMode ? 'none' : '0 2px 20px rgba(99, 102, 241, 0.1)'
+            color: isDarkMode ? '#a78bfa' : '#6366f1',
+            letterSpacing: '-2px'
           }}>
             Onkar Dehane
           </h1>
-          
-          <div style={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center', 
+
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
             gap: '1rem',
             marginBottom: '1rem'
           }}>
-            <span style={{ 
-              width: '60px', 
-              height: '2px', 
-              background: colors.gradientText 
+            <span style={{
+              width: '60px',
+              height: '2px',
+              background: colors.gradientText
             }} />
-            <p style={{ 
-              fontSize: 'clamp(1.25rem, 3vw, 1.75rem)', 
+            <p style={{
+              fontSize: 'clamp(1.25rem, 3vw, 1.75rem)',
               color: colors.textSecondary,
               fontWeight: '500'
             }}>
               Senior Full-Stack Developer
             </p>
-            <span style={{ 
-              width: '60px', 
-              height: '2px', 
-              background: colors.gradientText 
+            <span style={{
+              width: '60px',
+              height: '2px',
+              background: colors.gradientText
             }} />
           </div>
-          
-          <div style={{ 
-            fontSize: 'clamp(1rem, 2.5vw, 1.25rem)', 
-            background: colors.gradientText,
+
+          <div style={{
+            fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
+            backgroundImage: colors.gradientText,
             WebkitBackgroundClip: 'text',
+            backgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            marginBottom: '2rem', 
+            color: isDarkMode ? '#a78bfa' : '#6366f1',
+            marginBottom: '2rem',
             minHeight: '2rem',
             fontFamily: 'monospace',
             fontWeight: '500'
@@ -630,17 +626,17 @@ Visit: https://github.com/onkardehane`;
             <span style={{ animation: 'blink 1s infinite' }}>|</span>
             <span style={{ opacity: 0.8 }}>/&gt;</span>
           </div>
-          
+
           {/* CTA Buttons with Hover Effects */}
-          <div style={{ 
-            display: 'flex', 
-            flexWrap: 'wrap', 
-            gap: '1rem', 
-            justifyContent: 'center', 
-            marginBottom: '2rem' 
+          <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '1rem',
+            justifyContent: 'center',
+            marginBottom: '2rem'
           }}>
-            <button 
-              onClick={() => scrollToSection('projects')} 
+            <button
+              onClick={() => scrollToSection('projects')}
               style={{
                 padding: '1rem 2.5rem',
                 border: 'none',
@@ -654,29 +650,29 @@ Visit: https://github.com/onkardehane`;
                 gap: '0.5rem',
                 background: colors.gradientText,
                 color: '#fff',
-                boxShadow: isDarkMode 
-                  ? '0 10px 30px rgba(139, 92, 246, 0.3)' 
+                boxShadow: isDarkMode
+                  ? '0 10px 30px rgba(139, 92, 246, 0.3)'
                   : '0 10px 30px rgba(99, 102, 241, 0.2)',
                 transform: 'translateY(0)',
                 fontSize: '1rem'
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-3px)';
-                e.currentTarget.style.boxShadow = isDarkMode 
-                  ? '0 15px 40px rgba(139, 92, 246, 0.4)' 
+                e.currentTarget.style.boxShadow = isDarkMode
+                  ? '0 15px 40px rgba(139, 92, 246, 0.4)'
                   : '0 15px 40px rgba(99, 102, 241, 0.3)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = isDarkMode 
-                  ? '0 10px 30px rgba(139, 92, 246, 0.3)' 
+                e.currentTarget.style.boxShadow = isDarkMode
+                  ? '0 10px 30px rgba(139, 92, 246, 0.3)'
                   : '0 10px 30px rgba(99, 102, 241, 0.2)';
               }}
             >
               <Layers size={20} /> View Projects
             </button>
-            
-            <button 
+
+            <button
               onClick={handleDownloadResume}
               style={{
                 padding: '1rem 2.5rem',
@@ -761,9 +757,9 @@ Visit: https://github.com/onkardehane`;
       </section>
 
       {/* About Section with Creative Cards */}
-      <section id="about" style={{ 
-        padding: '5rem 2rem', 
-        maxWidth: '1200px', 
+      <section id="about" style={{
+        padding: '5rem 2rem',
+        maxWidth: '1200px',
         margin: '0 auto',
         position: 'relative',
         zIndex: 1
@@ -773,52 +769,54 @@ Visit: https://github.com/onkardehane`;
           fontWeight: '700',
           textAlign: 'center',
           marginBottom: '3rem',
-          background: colors.gradientText,
+          backgroundImage: colors.gradientText,
           WebkitBackgroundClip: 'text',
+          backgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
+          color: isDarkMode ? '#a78bfa' : '#6366f1',
           position: 'relative'
         }}>
-          <Sparkles size={30} style={{ 
-            position: 'absolute', 
-            left: '-40px', 
-            top: '50%', 
+          <Sparkles size={30} style={{
+            position: 'absolute',
+            left: '-40px',
+            top: '50%',
             transform: 'translateY(-50%)',
             color: colors.accent,
             opacity: 0.5
           }} />
           About Me
-          <Sparkles size={30} style={{ 
-            position: 'absolute', 
-            right: '-40px', 
-            top: '50%', 
+          <Sparkles size={30} style={{
+            position: 'absolute',
+            right: '-40px',
+            top: '50%',
             transform: 'translateY(-50%)',
             color: colors.accent,
             opacity: 0.5
           }} />
         </h2>
-        
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: window.innerWidth > 768 ? '1fr 2fr' : '1fr', 
-          gap: '4rem', 
-          alignItems: 'center' 
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: window.innerWidth > 768 ? '1fr 2fr' : '1fr',
+          gap: '4rem',
+          alignItems: 'center'
         }}>
           <div style={{ position: 'relative' }}>
-            <div style={{ 
-              width: '100%', 
-              height: '450px', 
+            <div style={{
+              width: '100%',
+              height: '450px',
               background: colors.gradientText,
               borderRadius: '20px',
               padding: '4px',
-              boxShadow: isDarkMode 
-                ? '0 20px 60px rgba(139, 92, 246, 0.3)' 
+              boxShadow: isDarkMode
+                ? '0 20px 60px rgba(139, 92, 246, 0.3)'
                 : '0 20px 60px rgba(99, 102, 241, 0.1)',
               position: 'relative',
               transform: 'rotate(-2deg)',
               transition: 'transform 0.3s ease'
             }}
-            onMouseEnter={(e) => e.currentTarget.style.transform = 'rotate(0)'}
-            onMouseLeave={(e) => e.currentTarget.style.transform = 'rotate(-2deg)'}>
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'rotate(0)'}
+              onMouseLeave={(e) => e.currentTarget.style.transform = 'rotate(-2deg)'}>
               <div style={{
                 width: '100%',
                 height: '100%',
@@ -830,7 +828,7 @@ Visit: https://github.com/onkardehane`;
                 <ProfileImage />
               </div>
             </div>
-            
+
             {/* Floating Elements */}
             <div style={{
               position: 'absolute',
@@ -855,55 +853,55 @@ Visit: https://github.com/onkardehane`;
               animation: 'float 8s ease-in-out infinite reverse'
             }} />
           </div>
-          
+
           <div>
-            <p style={{ 
-              fontSize: '1.1rem', 
-              lineHeight: '1.8', 
+            <p style={{
+              fontSize: '1.1rem',
+              lineHeight: '1.8',
               marginBottom: '1.5rem',
-              color: colors.textSecondary 
+              color: colors.textSecondary
             }}>
-              I'm a passionate Full-Stack Developer with <strong style={{ 
+              I'm a passionate Full-Stack Developer with <strong style={{
                 color: colors.primary,
                 background: `${colors.primary}10`,
                 padding: '2px 6px',
                 borderRadius: '4px'
-              }}>5+ years of experience</strong> building 
-              enterprise-grade applications. My expertise spans from creating intuitive user interfaces to 
+              }}>5+ years of experience</strong> building
+              enterprise-grade applications. My expertise spans from creating intuitive user interfaces to
               architecting robust backend systems that scale.
             </p>
-            <p style={{ 
-              fontSize: '1.1rem', 
-              lineHeight: '1.8', 
+            <p style={{
+              fontSize: '1.1rem',
+              lineHeight: '1.8',
               marginBottom: '1.5rem',
-              color: colors.textSecondary 
+              color: colors.textSecondary
             }}>
-              Specialized in <strong style={{ 
+              Specialized in <strong style={{
                 color: colors.primary,
                 background: `${colors.primary}10`,
                 padding: '2px 6px',
                 borderRadius: '4px'
-              }}>Java Spring Boot</strong> and <strong style={{ 
+              }}>Java Spring Boot</strong> and <strong style={{
                 color: colors.primary,
                 background: `${colors.primary}10`,
                 padding: '2px 6px',
                 borderRadius: '4px'
-              }}>Angular</strong>, I've delivered 
-              solutions for companies like <strong style={{ color: colors.primary }}>Meetingmasters.de</strong>, <strong style={{ color: colors.primary }}>IMC AG</strong> and <strong style={{ color: colors.primary }}>SAP</strong>, focusing on 
+              }}>Angular</strong>, I've delivered
+              solutions for companies like <strong style={{ color: colors.primary }}>Meetingmasters.de</strong>, <strong style={{ color: colors.primary }}>IMC AG</strong> and <strong style={{ color: colors.primary }}>SAP</strong>, focusing on
               performance optimization, cloud deployment, and GDPR compliance.
             </p>
-            
+
             {/* Stats Grid with Glassmorphism */}
-            <div style={{ 
-              display: 'grid', 
-              gridTemplateColumns: 'repeat(2, 1fr)', 
-              gap: '1.5rem', 
-              marginTop: '2rem' 
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: '1.5rem',
+              marginTop: '2rem'
             }}>
               {stats.map((stat, index) => (
                 <div key={index} style={{
-                  background: isDarkMode 
-                    ? `linear-gradient(135deg, ${colors.darkLight}, ${colors.primary}10)` 
+                  background: isDarkMode
+                    ? `linear-gradient(135deg, ${colors.darkLight}, ${colors.primary}10)`
                     : 'rgba(255, 255, 255, 0.8)',
                   backdropFilter: 'blur(10px)',
                   WebkitBackdropFilter: 'blur(10px)',
@@ -917,17 +915,17 @@ Visit: https://github.com/onkardehane`;
                   position: 'relative',
                   overflow: 'hidden'
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-5px) scale(1.02)';
-                  e.currentTarget.style.boxShadow = `0 10px 30px ${stat.color}20`;
-                  e.currentTarget.style.borderColor = stat.color;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.03)';
-                  e.currentTarget.style.borderColor = colors.border;
-                }}>
-                  <div style={{ 
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-5px) scale(1.02)';
+                    e.currentTarget.style.boxShadow = `0 10px 30px ${stat.color}20`;
+                    e.currentTarget.style.borderColor = stat.color;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.03)';
+                    e.currentTarget.style.borderColor = colors.border;
+                  }}>
+                  <div style={{
                     position: 'absolute',
                     top: 0,
                     left: 0,
@@ -939,18 +937,20 @@ Visit: https://github.com/onkardehane`;
                   <div style={{ color: stat.color, marginBottom: '0.5rem' }}>
                     {stat.icon}
                   </div>
-                  <div style={{ 
-                    fontSize: '2rem', 
-                    fontWeight: '700', 
-                    background: `linear-gradient(135deg, ${stat.color}, ${colors.primary})`,
+                  <div style={{
+                    fontSize: '2rem',
+                    fontWeight: '700',
+                    backgroundImage: `linear-gradient(135deg, ${stat.color}, ${colors.primary})`,
                     WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent'
+                    backgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    color: stat.color
                   }}>
                     {stat.number}
                   </div>
-                  <div style={{ 
-                    color: colors.textSecondary, 
-                    marginTop: '0.5rem', 
+                  <div style={{
+                    color: colors.textSecondary,
+                    marginTop: '0.5rem',
                     fontSize: '0.9rem',
                     fontWeight: '500'
                   }}>
@@ -964,9 +964,9 @@ Visit: https://github.com/onkardehane`;
       </section>
 
       {/* Skills Section with Creative Cards */}
-      <section id="skills" style={{ 
-        padding: '5rem 2rem', 
-        maxWidth: '1200px', 
+      <section id="skills" style={{
+        padding: '5rem 2rem',
+        maxWidth: '1200px',
         margin: '0 auto',
         position: 'relative',
         zIndex: 1
@@ -976,17 +976,19 @@ Visit: https://github.com/onkardehane`;
           fontWeight: '700',
           textAlign: 'center',
           marginBottom: '3rem',
-          background: colors.gradientText,
+          backgroundImage: colors.gradientText,
           WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent'
+          backgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          color: isDarkMode ? '#a78bfa' : '#6366f1'
         }}>
           Technical Expertise
         </h2>
-        
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
-          gap: '2rem' 
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '2rem'
         }}>
           {skills.map((skill, index) => (
             <div key={index} style={{
@@ -1001,22 +1003,22 @@ Visit: https://github.com/onkardehane`;
               position: 'relative',
               overflow: 'hidden'
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-10px) scale(1.02)';
-              e.currentTarget.style.boxShadow = `0 15px 40px ${skill.color}25`;
-              e.currentTarget.style.borderColor = skill.color;
-              e.currentTarget.style.background = isDarkMode 
-                ? colors.cardBg 
-                : `linear-gradient(135deg, white, ${skill.color}05)`;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0) scale(1)';
-              e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.03)';
-              e.currentTarget.style.borderColor = 'transparent';
-              e.currentTarget.style.background = isDarkMode ? colors.cardBg : 'white';
-            }}>
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-10px) scale(1.02)';
+                e.currentTarget.style.boxShadow = `0 15px 40px ${skill.color}25`;
+                e.currentTarget.style.borderColor = skill.color;
+                e.currentTarget.style.background = isDarkMode
+                  ? colors.cardBg
+                  : `linear-gradient(135deg, white, ${skill.color}05)`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.03)';
+                e.currentTarget.style.borderColor = 'transparent';
+                e.currentTarget.style.background = isDarkMode ? colors.cardBg : 'white';
+              }}>
               {/* Top Gradient Bar */}
-              <div style={{ 
+              <div style={{
                 position: 'absolute',
                 top: 0,
                 left: 0,
@@ -1024,7 +1026,7 @@ Visit: https://github.com/onkardehane`;
                 height: '4px',
                 background: skill.bgGradient
               }} />
-              
+
               {/* Icon with Background */}
               <div style={{
                 width: '80px',
@@ -1040,20 +1042,20 @@ Visit: https://github.com/onkardehane`;
               }}>
                 {skill.icon}
               </div>
-              
-              <h3 style={{ 
-                fontSize: '1.3rem', 
-                fontWeight: '600', 
+
+              <h3 style={{
+                fontSize: '1.3rem',
+                fontWeight: '600',
                 marginBottom: '1rem',
                 color: colors.light
               }}>
                 {skill.title}
               </h3>
-              
+
               <ul style={{ listStyle: 'none', padding: 0 }}>
                 {skill.skills.map((item, idx) => (
-                  <li key={idx} style={{ 
-                    padding: '0.5rem 0', 
+                  <li key={idx} style={{
+                    padding: '0.5rem 0',
                     color: colors.textSecondary,
                     display: 'flex',
                     alignItems: 'center',
@@ -1061,14 +1063,14 @@ Visit: https://github.com/onkardehane`;
                     fontSize: '0.95rem',
                     transition: 'all 0.3s ease'
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = skill.color;
-                    e.currentTarget.style.transform = 'translateX(5px)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = colors.textSecondary;
-                    e.currentTarget.style.transform = 'translateX(0)';
-                  }}>
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = skill.color;
+                      e.currentTarget.style.transform = 'translateX(5px)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = colors.textSecondary;
+                      e.currentTarget.style.transform = 'translateX(0)';
+                    }}>
                     <ChevronRight size={16} style={{ color: skill.color }} />
                     {item}
                   </li>
@@ -1080,9 +1082,9 @@ Visit: https://github.com/onkardehane`;
       </section>
 
       {/* Projects Section with Creative Cards */}
-      <section id="projects" style={{ 
-        padding: '5rem 2rem', 
-        maxWidth: '1200px', 
+      <section id="projects" style={{
+        padding: '5rem 2rem',
+        maxWidth: '1200px',
         margin: '0 auto',
         position: 'relative',
         zIndex: 1
@@ -1092,17 +1094,19 @@ Visit: https://github.com/onkardehane`;
           fontWeight: '700',
           textAlign: 'center',
           marginBottom: '3rem',
-          background: colors.gradientText,
+          backgroundImage: colors.gradientText,
           WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent'
+          backgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          color: isDarkMode ? '#a78bfa' : '#6366f1'
         }}>
           Featured Projects
         </h2>
-        
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
-          gap: '2rem' 
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+          gap: '2rem'
         }}>
           {projects.map((project, index) => (
             <div key={index} style={{
@@ -1115,14 +1119,14 @@ Visit: https://github.com/onkardehane`;
               cursor: 'pointer',
               position: 'relative'
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-10px) rotate(1deg)';
-              e.currentTarget.style.boxShadow = '0 20px 50px rgba(99, 102, 241, 0.15)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0) rotate(0)';
-              e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.03)';
-            }}>
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-10px) rotate(1deg)';
+                e.currentTarget.style.boxShadow = '0 20px 50px rgba(99, 102, 241, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0) rotate(0)';
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.03)';
+              }}>
               {/* Project Header with Gradient */}
               <div style={{
                 height: '200px',
@@ -1149,32 +1153,32 @@ Visit: https://github.com/onkardehane`;
                   background: 'linear-gradient(to top, rgba(0,0,0,0.3), transparent)'
                 }} />
               </div>
-              
+
               {/* Project Content */}
               <div style={{ padding: '2rem' }}>
-                <h3 style={{ 
-                  fontSize: '1.5rem', 
-                  fontWeight: '600', 
+                <h3 style={{
+                  fontSize: '1.5rem',
+                  fontWeight: '600',
                   marginBottom: '1rem',
                   color: colors.light
                 }}>
                   {project.title}
                 </h3>
-                <p style={{ 
-                  color: colors.textSecondary, 
+                <p style={{
+                  color: colors.textSecondary,
                   marginBottom: '1.5rem',
                   fontSize: '0.95rem',
                   lineHeight: '1.6'
                 }}>
                   {project.description}
                 </p>
-                
+
                 {/* Tech Stack */}
-                <div style={{ 
-                  display: 'flex', 
-                  flexWrap: 'wrap', 
-                  gap: '0.5rem', 
-                  marginBottom: '1.5rem' 
+                <div style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '0.5rem',
+                  marginBottom: '1.5rem'
                 }}>
                   {project.tech.map((tech, idx) => (
                     <span key={idx} style={{
@@ -1190,16 +1194,16 @@ Visit: https://github.com/onkardehane`;
                     </span>
                   ))}
                 </div>
-                
+
                 {/* Project Links */}
                 <div style={{ display: 'flex', gap: '1rem' }}>
-                  <button style={{ 
-                    color: colors.primary, 
+                  <button style={{
+                    color: colors.primary,
                     background: 'transparent',
                     border: 'none',
                     cursor: 'pointer',
-                    display: 'flex', 
-                    alignItems: 'center', 
+                    display: 'flex',
+                    alignItems: 'center',
                     gap: '0.5rem',
                     fontSize: '0.95rem',
                     fontWeight: '500',
@@ -1207,23 +1211,23 @@ Visit: https://github.com/onkardehane`;
                     borderRadius: '8px',
                     transition: 'all 0.3s ease'
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = `${colors.primary}10`;
-                    e.currentTarget.style.transform = 'translateX(5px)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'transparent';
-                    e.currentTarget.style.transform = 'translateX(0)';
-                  }}>
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = `${colors.primary}10`;
+                      e.currentTarget.style.transform = 'translateX(5px)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'transparent';
+                      e.currentTarget.style.transform = 'translateX(0)';
+                    }}>
                     <ExternalLink size={16} /> Live Demo
                   </button>
-                  <button style={{ 
-                    color: colors.primary, 
+                  <button style={{
+                    color: colors.primary,
                     background: 'transparent',
                     border: 'none',
                     cursor: 'pointer',
-                    display: 'flex', 
-                    alignItems: 'center', 
+                    display: 'flex',
+                    alignItems: 'center',
                     gap: '0.5rem',
                     fontSize: '0.95rem',
                     fontWeight: '500',
@@ -1231,14 +1235,14 @@ Visit: https://github.com/onkardehane`;
                     borderRadius: '8px',
                     transition: 'all 0.3s ease'
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = `${colors.primary}10`;
-                    e.currentTarget.style.transform = 'translateX(5px)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'transparent';
-                    e.currentTarget.style.transform = 'translateX(0)';
-                  }}>
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = `${colors.primary}10`;
+                      e.currentTarget.style.transform = 'translateX(5px)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'transparent';
+                      e.currentTarget.style.transform = 'translateX(0)';
+                    }}>
                     <Github size={16} /> GitHub
                   </button>
                 </div>
@@ -1249,9 +1253,9 @@ Visit: https://github.com/onkardehane`;
       </section>
 
       {/* Experience Timeline */}
-      <section id="experience" style={{ 
-        padding: '5rem 2rem', 
-        maxWidth: '1200px', 
+      <section id="experience" style={{
+        padding: '5rem 2rem',
+        maxWidth: '1200px',
         margin: '0 auto',
         position: 'relative',
         zIndex: 1
@@ -1261,13 +1265,15 @@ Visit: https://github.com/onkardehane`;
           fontWeight: '700',
           textAlign: 'center',
           marginBottom: '3rem',
-          background: colors.gradientText,
+          backgroundImage: colors.gradientText,
           WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent'
+          backgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          color: isDarkMode ? '#a78bfa' : '#6366f1'
         }}>
           Professional Journey
         </h2>
-        
+
         <div style={{ position: 'relative', paddingLeft: '2rem' }}>
           <div style={{
             position: 'absolute',
@@ -1278,11 +1284,11 @@ Visit: https://github.com/onkardehane`;
             background: colors.gradientText,
             borderRadius: '2px'
           }}></div>
-          
+
           {experience.map((exp, index) => (
-            <div key={index} style={{ 
-              position: 'relative', 
-              paddingBottom: '3rem' 
+            <div key={index} style={{
+              position: 'relative',
+              paddingBottom: '3rem'
             }}>
               <div style={{
                 position: 'absolute',
@@ -1305,7 +1311,7 @@ Visit: https://github.com/onkardehane`;
                   borderRadius: '50%'
                 }} />
               </div>
-              
+
               <div style={{
                 background: isDarkMode ? colors.cardBg : 'white',
                 padding: '2rem',
@@ -1316,16 +1322,16 @@ Visit: https://github.com/onkardehane`;
                 position: 'relative',
                 overflow: 'hidden'
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateX(10px)';
-                e.currentTarget.style.boxShadow = `0 10px 30px ${exp.color}20`;
-                e.currentTarget.style.borderColor = exp.color;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateX(0)';
-                e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.03)';
-                e.currentTarget.style.borderColor = colors.border;
-              }}>
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateX(10px)';
+                  e.currentTarget.style.boxShadow = `0 10px 30px ${exp.color}20`;
+                  e.currentTarget.style.borderColor = exp.color;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateX(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.03)';
+                  e.currentTarget.style.borderColor = colors.border;
+                }}>
                 <div style={{
                   position: 'absolute',
                   top: 0,
@@ -1334,10 +1340,10 @@ Visit: https://github.com/onkardehane`;
                   height: '3px',
                   background: exp.color
                 }} />
-                
-                <div style={{ 
-                  color: exp.color, 
-                  fontWeight: '600', 
+
+                <div style={{
+                  color: exp.color,
+                  fontWeight: '600',
                   marginBottom: '0.5rem',
                   fontSize: '0.9rem',
                   display: 'flex',
@@ -1347,23 +1353,23 @@ Visit: https://github.com/onkardehane`;
                   <Calendar size={16} />
                   {exp.date}
                 </div>
-                <h3 style={{ 
-                  fontSize: '1.5rem', 
-                  fontWeight: '600', 
+                <h3 style={{
+                  fontSize: '1.5rem',
+                  fontWeight: '600',
                   marginBottom: '0.5rem',
                   color: colors.light
                 }}>
                   {exp.title}
                 </h3>
-                <p style={{ 
-                  color: colors.textSecondary, 
+                <p style={{
+                  color: colors.textSecondary,
                   marginBottom: '1rem',
                   fontSize: '1rem',
                   fontWeight: '500'
                 }}>
                   {exp.company}
                 </p>
-                <p style={{ 
+                <p style={{
                   marginBottom: '1rem',
                   color: colors.textSecondary,
                   fontSize: '0.95rem',
@@ -1371,15 +1377,15 @@ Visit: https://github.com/onkardehane`;
                 }}>
                   {exp.description}
                 </p>
-                
+
                 {exp.highlights && (
-                  <ul style={{ 
-                    marginBottom: '1rem', 
-                    paddingLeft: '1rem' 
+                  <ul style={{
+                    marginBottom: '1rem',
+                    paddingLeft: '1rem'
                   }}>
                     {exp.highlights.map((highlight, idx) => (
-                      <li key={idx} style={{ 
-                        color: colors.textSecondary, 
+                      <li key={idx} style={{
+                        color: colors.textSecondary,
                         marginBottom: '0.5rem',
                         fontSize: '0.9rem',
                         lineHeight: '1.5'
@@ -1389,11 +1395,11 @@ Visit: https://github.com/onkardehane`;
                     ))}
                   </ul>
                 )}
-                
-                <div style={{ 
-                  display: 'flex', 
-                  flexWrap: 'wrap', 
-                  gap: '0.5rem' 
+
+                <div style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '0.5rem'
                 }}>
                   {exp.tech.map((tech, idx) => (
                     <span key={idx} style={{
@@ -1416,9 +1422,9 @@ Visit: https://github.com/onkardehane`;
       </section>
 
       {/* Contact Section */}
-      <section id="contact" style={{ 
-        padding: '5rem 2rem', 
-        maxWidth: '1200px', 
+      <section id="contact" style={{
+        padding: '5rem 2rem',
+        maxWidth: '1200px',
         margin: '0 auto',
         position: 'relative',
         zIndex: 1
@@ -1428,16 +1434,18 @@ Visit: https://github.com/onkardehane`;
           fontWeight: '700',
           textAlign: 'center',
           marginBottom: '3rem',
-          background: colors.gradientText,
+          backgroundImage: colors.gradientText,
           WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent'
+          backgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          color: isDarkMode ? '#a78bfa' : '#6366f1'
         }}>
           Let's Connect
         </h2>
-        
+
         <div style={{
-          background: isDarkMode 
-            ? `linear-gradient(135deg, ${colors.darkLight}, ${colors.primary}10)` 
+          background: isDarkMode
+            ? `linear-gradient(135deg, ${colors.darkLight}, ${colors.primary}10)`
             : 'linear-gradient(135deg, #f0f9ff, #fef3f3)',
           borderRadius: '30px',
           padding: '3rem',
@@ -1458,49 +1466,49 @@ Visit: https://github.com/onkardehane`;
               borderRadius: '50%'
             }} />
           )}
-          
-          <p style={{ 
-            fontSize: '1.2rem', 
+
+          <p style={{
+            fontSize: '1.2rem',
             marginBottom: '3rem',
             color: colors.textSecondary,
             maxWidth: '600px',
             margin: '0 auto 3rem'
           }}>
-            I'm always interested in discussing new opportunities and challenging projects. 
+            I'm always interested in discussing new opportunities and challenging projects.
             Feel free to reach out through any of the channels below!
           </p>
-          
+
           {/* Contact Cards */}
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
-            gap: '2rem', 
-            marginBottom: '3rem' 
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '2rem',
+            marginBottom: '3rem'
           }}>
             {[
-              { 
-                icon: <Mail size={24} />, 
-                title: "Email", 
-                value: "onkar.dehane24@gmail.com", 
+              {
+                icon: <Mail size={24} />,
+                title: "Email",
+                value: "onkar.dehane24@gmail.com",
                 href: "mailto:onkar.dehane24@gmail.com",
                 color: '#ea4335'
               },
-              { 
-                icon: <Phone size={24} />, 
-                title: "Phone", 
-                value: "+49 152 2545 7768", 
+              {
+                icon: <Phone size={24} />,
+                title: "Phone",
+                value: "+49 152 2545 7768",
                 href: "tel:+4915225457768",
                 color: '#25d366'
               },
-              { 
-                icon: <MapPin size={24} />, 
-                title: "Location", 
-                value: "Germany", 
+              {
+                icon: <MapPin size={24} />,
+                title: "Location",
+                value: "Germany",
                 href: null,
                 color: '#4285f4'
               }
             ].map((contact, index) => (
-              <div key={index} style={{ 
+              <div key={index} style={{
                 background: isDarkMode ? colors.dark : 'white',
                 padding: '2rem',
                 borderRadius: '20px',
@@ -1509,21 +1517,21 @@ Visit: https://github.com/onkardehane`;
                 transition: 'all 0.3s ease',
                 cursor: contact.href ? 'pointer' : 'default'
               }}
-              onClick={() => contact.href && window.open(contact.href, contact.href.startsWith('http') ? '_blank' : '_self')}
-              onMouseEnter={(e) => {
-                if (contact.href) {
-                  e.currentTarget.style.transform = 'translateY(-5px)';
-                  e.currentTarget.style.boxShadow = `0 10px 30px ${contact.color}20`;
-                  e.currentTarget.style.borderColor = contact.color;
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (contact.href) {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.03)';
-                  e.currentTarget.style.borderColor = colors.border;
-                }
-              }}>
+                onClick={() => contact.href && window.open(contact.href, contact.href.startsWith('http') ? '_blank' : '_self')}
+                onMouseEnter={(e) => {
+                  if (contact.href) {
+                    e.currentTarget.style.transform = 'translateY(-5px)';
+                    e.currentTarget.style.boxShadow = `0 10px 30px ${contact.color}20`;
+                    e.currentTarget.style.borderColor = contact.color;
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (contact.href) {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.03)';
+                    e.currentTarget.style.borderColor = colors.border;
+                  }
+                }}>
                 <div style={{
                   width: '60px',
                   height: '60px',
@@ -1537,15 +1545,15 @@ Visit: https://github.com/onkardehane`;
                 }}>
                   {contact.icon}
                 </div>
-                <h3 style={{ 
-                  fontSize: '1.1rem', 
+                <h3 style={{
+                  fontSize: '1.1rem',
                   fontWeight: '600',
                   color: colors.light,
                   marginBottom: '0.5rem'
                 }}>
                   {contact.title}
                 </h3>
-                <p style={{ 
+                <p style={{
                   color: contact.href ? contact.color : colors.textSecondary,
                   fontSize: '0.95rem',
                   fontWeight: contact.href ? '500' : '400'
@@ -1557,7 +1565,7 @@ Visit: https://github.com/onkardehane`;
           </div>
 
           {/* CTA Button */}
-          <button 
+          <button
             onClick={() => window.open('mailto:onkar.dehane24@gmail.com', '_self')}
             style={{
               padding: '1rem 3rem',
@@ -1589,21 +1597,21 @@ Visit: https://github.com/onkardehane`;
       </section>
 
       {/* Footer with Creative Design */}
-      <footer style={{ 
-        textAlign: 'center', 
-        padding: '3rem 2rem', 
-        background: isDarkMode 
-          ? colors.darkLight 
+      <footer style={{
+        textAlign: 'center',
+        padding: '3rem 2rem',
+        background: isDarkMode
+          ? colors.darkLight
           : 'linear-gradient(180deg, #fafbff 0%, #f0f9ff 100%)',
         position: 'relative',
         zIndex: 1,
         borderTop: `1px solid ${colors.border}`
       }}>
-        <div style={{ 
-          display: 'flex', 
-          gap: '1rem', 
-          justifyContent: 'center', 
-          marginBottom: '2rem' 
+        <div style={{
+          display: 'flex',
+          gap: '1rem',
+          justifyContent: 'center',
+          marginBottom: '2rem'
         }}>
           {[
             { icon: <Github size={20} />, href: "https://github.com/onkardehane", color: '#333' },
@@ -1634,16 +1642,16 @@ Visit: https://github.com/onkardehane`;
             </a>
           ))}
         </div>
-        
-        <p style={{ 
+
+        <p style={{
           marginBottom: '0.5rem',
           color: colors.textSecondary,
           fontWeight: '500'
         }}>
           © 2024 Onkar Dehane | Built with passion and code
         </p>
-        
-        <p style={{ 
+
+        <p style={{
           color: colors.gray,
           fontSize: '0.9rem',
           display: 'flex',
