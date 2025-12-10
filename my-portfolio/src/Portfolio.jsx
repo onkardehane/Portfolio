@@ -104,36 +104,14 @@ const Portfolio = () => {
   }, []);
 
   const handleDownloadResume = () => {
-    // Create a sample resume text file
-    const resumeContent = `ONKAR DEHANE
-Senior Full-Stack Developer
-Germany | +49 152 2545 7768 | onkar.dehane24@gmail.com
-
-SUMMARY
-Passionate Full-Stack Developer with 5+ years of experience building enterprise-grade applications.
-
-EXPERIENCE
-• Senior Fullstack Developer - Meetingmasters.de (Dec 2023 - Present)
-• Software Developer - IMC AG (Jan 2022 - Jul 2023)
-• Developer - SAP (Nov 2020 - Oct 2021)
-
-SKILLS
-• Frontend: Angular, React, TypeScript, HTML5/CSS3
-• Backend: Java, Spring Boot, Node.js, Python
-• Database: PostgreSQL, MySQL, MongoDB
-• Cloud: AWS, Azure, Docker, Kubernetes
-
-Visit: https://github.com/onkardehane`;
-
-    const blob = new Blob([resumeContent], { type: 'text/plain' });
-    const url = window.URL.createObjectURL(blob);
+    // Download the actual PDF resume
     const link = document.createElement('a');
-    link.href = url;
-    link.download = 'Onkar_Dehane_Resume.txt';
+    link.href = '/assets/documents/Onkar_Dehane_Resume.pdf';
+    link.download = 'Onkar_Dehane_Resume.pdf';
+    link.target = '_blank';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    window.URL.revokeObjectURL(url);
   };
 
   const scrollToSection = (sectionId) => {
