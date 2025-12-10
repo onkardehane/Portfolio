@@ -10,7 +10,7 @@
       }
     },
     {
-      "src": "/(.*\\.(png|jpg|jpeg|gif|ico|svg|webp|js|css|woff|woff2|ttf|eot))",
+      "src": "/(.*\\.(png|jpg|jpeg|gif|ico|svg|webp|pdf|js|css|woff|woff2|ttf|eot))",
       "headers": {
         "cache-control": "public, max-age=86400"
       }
