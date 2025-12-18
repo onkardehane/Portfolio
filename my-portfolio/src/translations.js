@@ -59,6 +59,10 @@ export const translations = {
             github: 'GitHub',
             items: [
                 {
+                    title: "VS Code Portfolio",
+                    description: "Interactive developer portfolio themed after Visual Studio Code. Features a functional terminal, dynamic file system, live GitHub stats integration, and multi-theme support (Dark+, Light+, Monokai)."
+                },
+                {
                     title: "Event Management Platform",
                     description: "Full-featured platform with automated workflows, secure payment integration, and real-time analytics. Migrated legacy system to Angular, improving performance by 40%."
                 },
@@ -193,6 +197,10 @@ export const translations = {
             liveDemo: 'Live Demo',
             github: 'GitHub',
             items: [
+                {
+                    title: "VS Code Portfolio",
+                    description: "Interaktives Entwickler-Portfolio im Design von Visual Studio Code. Verfügt über ein funktionales Terminal, ein dynamisches Dateisystem, Live-GitHub-Statistiken und Unterstützung für mehrere Themes (Dark+, Light+, Monokai)."
+                },
                 {
                     title: "Event-Management-Plattform",
                     description: "Voll ausgestattete Plattform mit automatisierten Workflows, sicherer Zahlungsintegration und Echtzeit-Analysen. Migration eines Altsystems auf Angular, Leistungssteigerung um 40%."
