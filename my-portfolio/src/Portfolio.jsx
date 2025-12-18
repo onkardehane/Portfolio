@@ -193,6 +193,8 @@ const Portfolio = () => {
       title: t.skills.aitools,
       description: "Proficiency in leveraging and integrating AI technologies and models.",
       icon: <Bot size={40} />,
+      color: isDarkMode ? '#22d3ee' : '#0891b2',
+      bgGradient: 'linear-gradient(135deg, #06b6d4, #0ea5e9)',
       skills: ["LLMs (GPT-4, Gemini, Claude)", "Prompt Engineering", "OpenRouter / OpenAI API", "LangChain / AI Orchestration", "Python for AI (FastAPI)"]
     }
   ];
