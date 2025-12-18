@@ -37,25 +37,26 @@ import {
   Terminal
 } from 'lucide-react';
 
-// Move phrases outside component to avoid re-render issues
-const TYPING_PHRASES = [
-  "Building Scalable Enterprise Solutions",
-  "Creating Seamless User Experiences",
-  "Architecting Cloud-Native Applications",
-  "Optimizing Performance & Security"
-];
+import { translations } from './translations';
+
+// Move phrases outside component to avoid re-render issues - defaulting to English initially, but we'll use state inside
+const DEFAULT_PHRASES = translations.en.hero.typingPhrases;
 
 const Portfolio = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [language, setLanguage] = useState('en'); // 'en' or 'de'
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [typingText, setTypingText] = useState('');
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
 
+  const t = translations[language]; // Translation helper
+
   useEffect(() => {
     let timeout;
-    const currentPhrase = TYPING_PHRASES[currentPhraseIndex];
+    const currentPhrases = t.hero.typingPhrases;
+    const currentPhrase = currentPhrases[currentPhraseIndex % currentPhrases.length];
 
     if (isTyping) {
       if (typingText.length < currentPhrase.length) {
@@ -73,13 +74,13 @@ const Portfolio = () => {
           setTypingText(typingText.substring(0, typingText.length - 1));
         }, 50);
       } else {
-        setCurrentPhraseIndex((prev) => (prev + 1) % TYPING_PHRASES.length);
+        setCurrentPhraseIndex((prev) => (prev + 1) % currentPhrases.length);
         setIsTyping(true);
       }
     }
 
     return () => clearTimeout(timeout);
-  }, [typingText, currentPhraseIndex, isTyping]);
+  }, [typingText, currentPhraseIndex, isTyping, t]);
 
   // Track scroll position for active section
   useEffect(() => {
@@ -152,37 +153,37 @@ const Portfolio = () => {
   };
 
   const stats = [
-    { number: '5+', label: 'Years Experience', icon: <Award size={24} />, color: '#6366f1' },
-    { number: '25+', label: 'Projects Delivered', icon: <Rocket size={24} />, color: '#8b5cf6' },
-    { number: '1M+', label: 'Lines of Code', icon: <Terminal size={24} />, color: '#ec4899' },
-    { number: '4', label: 'Companies', icon: <Users size={24} />, color: '#10b981' }
+    { number: '5+', label: t.about.stats.years, icon: <Award size={24} />, color: '#6366f1' },
+    { number: '25+', label: t.about.stats.projects, icon: <Rocket size={24} />, color: '#8b5cf6' },
+    { number: '1M+', label: t.about.stats.lines, icon: <Terminal size={24} />, color: '#ec4899' },
+    { number: '4', label: t.about.stats.companies, icon: <Users size={24} />, color: '#10b981' }
   ];
 
   const skills = [
     {
       icon: <Code size={48} />,
-      title: "Frontend Development",
+      title: t.skills.frontend,
       color: isDarkMode ? '#a78bfa' : '#6366f1',
       bgGradient: 'linear-gradient(135deg, #6366f1, #a78bfa)',
       skills: ["Angular (Expert)", "React & TypeScript", "HTML5 / CSS3 / Sass", "Responsive Design", "Bootstrap / Material UI"]
     },
     {
       icon: <Server size={48} />,
-      title: "Backend Development",
+      title: t.skills.backend,
       color: isDarkMode ? '#06b6d4' : '#8b5cf6',
       bgGradient: 'linear-gradient(135deg, #8b5cf6, #c084fc)',
       skills: ["Java / Spring Boot", "REST APIs / Microservices", "Node.js / Express", "Python / Django", "Hibernate / JPA"]
     },
     {
       icon: <Database size={48} />,
-      title: "Database & Cloud",
+      title: t.skills.database,
       color: isDarkMode ? '#10b981' : '#ec4899',
       bgGradient: 'linear-gradient(135deg, #ec4899, #f472b6)',
       skills: ["PostgreSQL / MySQL", "MongoDB / NoSQL", "AWS / Azure", "Docker / Kubernetes", "CI/CD Pipelines"]
     },
     {
       icon: <Settings size={48} />,
-      title: "Tools & Practices",
+      title: t.skills.tools,
       color: isDarkMode ? '#f59e0b' : '#10b981',
       bgGradient: 'linear-gradient(135deg, #10b981, #34d399)',
       skills: ["Git / GitHub / GitLab", "Jenkins / CircleCI", "Agile / Scrum", "JIRA / Confluence", "IntelliJ IDEA / VS Code"]
@@ -191,48 +192,48 @@ const Portfolio = () => {
 
   const projects = [
     {
-      title: "Event Management Platform",
-      description: "Full-featured platform with automated workflows, secure payment integration, and real-time analytics. Migrated legacy system to Angular, improving performance by 40%.",
+      title: t.projects.items[0].title,
+      description: t.projects.items[0].description,
       tech: ["Angular", "Spring Boot", "PostgreSQL", "Stripe API"],
       icon: <Calendar size={48} />,
       gradient: 'linear-gradient(135deg, #6366f1, #a78bfa)',
       emoji: '📅'
     },
     {
-      title: "Learning Management System",
-      description: "Enterprise LMS serving 10,000+ users with video streaming, progress tracking, and interactive assessments. Implemented GDPR compliance features.",
+      title: t.projects.items[1].title,
+      description: t.projects.items[1].description,
       tech: ["Java", "Spring Boot", "Angular", "AWS"],
       icon: <GraduationCap size={48} />,
       gradient: 'linear-gradient(135deg, #8b5cf6, #c084fc)',
       emoji: '🎓'
     },
     {
-      title: "Real-time Chat Application",
-      description: "WebSocket-based chat with video calling, file sharing, and end-to-end encryption. Supports 1000+ concurrent users with minimal latency.",
+      title: t.projects.items[2].title,
+      description: t.projects.items[2].description,
       tech: ["Node.js", "Socket.io", "React", "MongoDB"],
       icon: <MessageSquare size={48} />,
       gradient: 'linear-gradient(135deg, #ec4899, #f472b6)',
       emoji: '💬'
     },
     {
-      title: "Analytics Dashboard",
-      description: "Real-time business intelligence dashboard with custom KPIs, data visualization, and automated reporting. Processes 1M+ data points daily.",
+      title: t.projects.items[3].title,
+      description: t.projects.items[3].description,
       tech: ["React", "D3.js", "Python", "Redis"],
       icon: <TrendingUp size={48} />,
       gradient: 'linear-gradient(135deg, #10b981, #34d399)',
       emoji: '📊'
     },
     {
-      title: "AI-Powered API Service",
-      description: "RESTful microservices architecture with ML integration for predictive analytics. Handles 10K+ requests per minute with 99.9% uptime.",
+      title: t.projects.items[4].title,
+      description: t.projects.items[4].description,
       tech: ["Python", "FastAPI", "TensorFlow", "Docker"],
       icon: <Bot size={48} />,
       gradient: 'linear-gradient(135deg, #f59e0b, #fbbf24)',
       emoji: '🤖'
     },
     {
-      title: "E-Commerce Platform",
-      description: "Full-stack e-commerce solution with inventory management, payment processing, and admin dashboard. Generated $500K+ in transactions.",
+      title: t.projects.items[5].title,
+      description: t.projects.items[5].description,
       tech: ["MERN Stack", "Redux", "Stripe", "AWS"],
       icon: <ShoppingCart size={48} />,
       gradient: 'linear-gradient(135deg, #06b6d4, #0ea5e9)',
@@ -243,40 +244,28 @@ const Portfolio = () => {
   const experience = [
     {
       date: "Dec 2023 - Aug 2025",
-      title: "Senior Fullstack Developer",
+      title: t.experience.items[0].title,
       company: "Meetingmasters.de | Cologne, Germany",
-      description: "Led development of complex TypeScript/Angular applications with advanced component architecture and RxJS state management.",
-      highlights: [
-        "Built complex TypeScript/Angular applications",
-        "Achieved 30% improvement in user interaction performance",
-        "Delivered 40% performance improvement in SQL queries",
-        "Mentored junior developers on best practices"
-      ],
+      description: t.experience.items[0].description,
+      highlights: t.experience.items[0].highlights,
       tech: ["TypeScript", "Angular", "RxJS", "Node.js", "SQL"],
       color: '#6366f1'
     },
     {
       date: "January 2022 - July 2023",
-      title: "Software Developer",
+      title: t.experience.items[1].title,
       company: "IMC AG | Germany",
-      description: "Led development of enterprise learning management systems using Java Spring Boot and Angular.",
-      highlights: [
-        "Led development of enterprise LMS serving 10,000+ users",
-        "Enhanced application performance by 40%",
-        "Implemented GDPR compliance features"
-      ],
+      description: t.experience.items[1].description,
+      highlights: t.experience.items[1].highlights,
       tech: ["Java", "Spring Boot", "Angular", "PostgreSQL"],
       color: '#8b5cf6'
     },
     {
       date: "November 2020 - October 2021",
-      title: "Developer (Working Student)",
+      title: t.experience.items[2].title,
       company: "SAP | Walldorf, Germany",
-      description: "Built internal training platform using Mendix Studio Pro with cloud deployment.",
-      highlights: [
-        "Built internal training platform with cloud deployment",
-        "Improved user onboarding process by 60%"
-      ],
+      description: t.experience.items[2].description,
+      highlights: t.experience.items[2].highlights,
       tech: ["Mendix", "Cloud", "Microservices"],
       color: '#ec4899'
     }
@@ -404,7 +393,7 @@ const Portfolio = () => {
                       padding: '0.5rem 0'
                     }}
                   >
-                    {section}
+                    {t.nav[section]}
                     {activeSection === section && (
                       <span style={{
                         position: 'absolute',
@@ -422,33 +411,63 @@ const Portfolio = () => {
               ))}
             </ul>
 
-            {/* Theme Toggle with Animation */}
-            <button
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              style={{
-                padding: '0.6rem',
-                borderRadius: '12px',
-                background: isDarkMode
-                  ? 'linear-gradient(135deg, #1e293b, #334155)'
-                  : 'linear-gradient(135deg, #fff3cd, #ffe4a1)',
-                border: `1px solid ${colors.border}`,
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                transition: 'all 0.3s ease',
-                color: isDarkMode ? '#fbbf24' : '#f59e0b',
-                boxShadow: isDarkMode
-                  ? '0 2px 8px rgba(139, 92, 246, 0.2)'
-                  : '0 2px 8px rgba(251, 191, 36, 0.15)',
-                transform: 'scale(1)'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1) rotate(10deg)'}
-              onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1) rotate(0)'}
-              aria-label="Toggle theme"
-            >
-              {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              {/* Language Toggle */}
+              <button
+                onClick={() => setLanguage(language === 'en' ? 'de' : 'en')}
+                style={{
+                  padding: '0.6rem',
+                  borderRadius: '12px',
+                  background: isDarkMode
+                    ? 'linear-gradient(135deg, #1e293b, #334155)'
+                    : 'linear-gradient(135deg, #fff3cd, #ffe4a1)',
+                  border: `1px solid ${colors.border}`,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: 'all 0.3s ease',
+                  color: isDarkMode ? '#fbbf24' : '#f59e0b',
+                  boxShadow: isDarkMode
+                    ? '0 2px 8px rgba(139, 92, 246, 0.2)'
+                    : '0 2px 8px rgba(251, 191, 36, 0.15)',
+                  fontWeight: 'bold',
+                  fontSize: '0.9rem',
+                  minWidth: '40px'
+                }}
+                aria-label="Toggle language"
+              >
+                {language === 'en' ? 'DE' : 'EN'}
+              </button>
+
+              {/* Theme Toggle with Animation */}
+              <button
+                onClick={() => setIsDarkMode(!isDarkMode)}
+                style={{
+                  padding: '0.6rem',
+                  borderRadius: '12px',
+                  background: isDarkMode
+                    ? 'linear-gradient(135deg, #1e293b, #334155)'
+                    : 'linear-gradient(135deg, #fff3cd, #ffe4a1)',
+                  border: `1px solid ${colors.border}`,
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  transition: 'all 0.3s ease',
+                  color: isDarkMode ? '#fbbf24' : '#f59e0b',
+                  boxShadow: isDarkMode
+                    ? '0 2px 8px rgba(139, 92, 246, 0.2)'
+                    : '0 2px 8px rgba(251, 191, 36, 0.15)',
+                  transform: 'scale(1)'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.1) rotate(10deg)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1) rotate(0)'}
+                aria-label="Toggle theme"
+              >
+                {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -578,7 +597,7 @@ const Portfolio = () => {
               color: colors.textSecondary,
               fontWeight: '500'
             }}>
-              Senior Full-Stack Developer
+              {t.hero.title}
             </p>
             <span style={{
               width: '60px',
@@ -647,7 +666,7 @@ const Portfolio = () => {
                   : '0 10px 30px rgba(99, 102, 241, 0.2)';
               }}
             >
-              <Layers size={20} /> View Projects
+              <Layers size={20} /> {t.hero.viewProjects}
             </button>
 
             <button
@@ -680,7 +699,7 @@ const Portfolio = () => {
                 e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
-              <Download size={20} /> Download Resume
+              <Download size={20} /> {t.hero.downloadResume}
             </button>
           </div>
 
@@ -762,7 +781,7 @@ const Portfolio = () => {
             color: colors.accent,
             opacity: 0.5
           }} />
-          About Me
+          {t.about.title}
           <Sparkles size={30} style={{
             position: 'absolute',
             right: '-40px',
@@ -839,14 +858,12 @@ const Portfolio = () => {
               marginBottom: '1.5rem',
               color: colors.textSecondary
             }}>
-              I'm a passionate Full-Stack Developer with <strong style={{
+              {t.about.p1.part1} <strong style={{
                 color: colors.primary,
                 background: `${colors.primary}10`,
                 padding: '2px 6px',
                 borderRadius: '4px'
-              }}>5+ years of experience</strong> building
-              enterprise-grade applications. My expertise spans from creating intuitive user interfaces to
-              architecting robust backend systems that scale.
+              }}>{t.about.p1.highlight1}</strong> {t.about.p1.part2}
             </p>
             <p style={{
               fontSize: '1.1rem',
@@ -854,19 +871,17 @@ const Portfolio = () => {
               marginBottom: '1.5rem',
               color: colors.textSecondary
             }}>
-              Specialized in <strong style={{
+              {t.about.p2.part1} <strong style={{
                 color: colors.primary,
                 background: `${colors.primary}10`,
                 padding: '2px 6px',
                 borderRadius: '4px'
-              }}>Java Spring Boot</strong> and <strong style={{
+              }}>{t.about.p2.highlight1}</strong> {t.about.p2.part2} <strong style={{
                 color: colors.primary,
                 background: `${colors.primary}10`,
                 padding: '2px 6px',
                 borderRadius: '4px'
-              }}>Angular</strong>, I've delivered
-              solutions for companies like <strong style={{ color: colors.primary }}>Meetingmasters.de</strong>, <strong style={{ color: colors.primary }}>IMC AG</strong> and <strong style={{ color: colors.primary }}>SAP</strong>, focusing on
-              performance optimization, cloud deployment, and GDPR compliance.
+              }}>{t.about.p2.highlight2}</strong>{t.about.p2.part3} <strong style={{ color: colors.primary }}>{t.about.p2.highlight3}</strong>, <strong style={{ color: colors.primary }}>{t.about.p2.highlight4}</strong> {t.about.p2.part4} <strong style={{ color: colors.primary }}>{t.about.p2.highlight5}</strong>{t.about.p2.part5}
             </p>
 
             {/* Stats Grid with Glassmorphism */}
@@ -960,7 +975,7 @@ const Portfolio = () => {
           WebkitTextFillColor: 'transparent',
           color: isDarkMode ? '#a78bfa' : '#6366f1'
         }}>
-          Technical Expertise
+          {t.skills.title}
         </h2>
 
         <div style={{
@@ -1078,7 +1093,7 @@ const Portfolio = () => {
           WebkitTextFillColor: 'transparent',
           color: isDarkMode ? '#a78bfa' : '#6366f1'
         }}>
-          Featured Projects
+          {t.projects.title}
         </h2>
 
         <div style={{
@@ -1197,7 +1212,7 @@ const Portfolio = () => {
                       e.currentTarget.style.background = 'transparent';
                       e.currentTarget.style.transform = 'translateX(0)';
                     }}>
-                    <ExternalLink size={16} /> Live Demo
+                    <ExternalLink size={16} /> {t.projects.liveDemo}
                   </button>
                   <button style={{
                     color: colors.primary,
@@ -1221,7 +1236,7 @@ const Portfolio = () => {
                       e.currentTarget.style.background = 'transparent';
                       e.currentTarget.style.transform = 'translateX(0)';
                     }}>
-                    <Github size={16} /> GitHub
+                    <Github size={16} /> {t.projects.github}
                   </button>
                 </div>
               </div>
@@ -1249,7 +1264,7 @@ const Portfolio = () => {
           WebkitTextFillColor: 'transparent',
           color: isDarkMode ? '#a78bfa' : '#6366f1'
         }}>
-          Professional Journey
+          {t.experience.title}
         </h2>
 
         <div style={{ position: 'relative', paddingLeft: '2rem' }}>
@@ -1418,7 +1433,7 @@ const Portfolio = () => {
           WebkitTextFillColor: 'transparent',
           color: isDarkMode ? '#a78bfa' : '#6366f1'
         }}>
-          Let's Connect
+          {t.contact.title}
         </h2>
 
         <div style={{
@@ -1452,8 +1467,7 @@ const Portfolio = () => {
             maxWidth: '600px',
             margin: '0 auto 3rem'
           }}>
-            I'm always interested in discussing new opportunities and challenging projects.
-            Feel free to reach out through any of the channels below!
+            {t.contact.description}
           </p>
 
           {/* Contact Cards */}
@@ -1466,22 +1480,22 @@ const Portfolio = () => {
             {[
               {
                 icon: <Mail size={24} />,
-                title: "Email",
+                title: t.contact.email,
                 value: "onkar.dehane24@gmail.com",
                 href: "mailto:onkar.dehane24@gmail.com",
                 color: '#ea4335'
               },
               {
                 icon: <Phone size={24} />,
-                title: "Phone",
+                title: t.contact.phone,
                 value: "+49 152 2545 7768",
                 href: "tel:+4915225457768",
                 color: '#25d366'
               },
               {
                 icon: <MapPin size={24} />,
-                title: "Location",
-                value: "Germany",
+                title: t.contact.location,
+                value: t.contact.locationValue,
                 href: null,
                 color: '#4285f4'
               }
@@ -1569,7 +1583,7 @@ const Portfolio = () => {
               e.currentTarget.style.transform = 'translateY(0)';
               e.currentTarget.style.boxShadow = `0 10px 30px ${colors.primary}20`;
             }}>
-            <Send size={20} /> Get In Touch
+            <Send size={20} /> {t.contact.getInTouch}
           </button>
         </div>
       </section>
