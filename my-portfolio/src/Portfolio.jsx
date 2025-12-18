@@ -34,7 +34,8 @@ import {
   Star,
   Sparkles,
   Rocket,
-  Terminal
+  Terminal,
+  Check
 } from 'lucide-react';
 
 import { translations } from './translations';
@@ -261,6 +262,17 @@ const Portfolio = () => {
       image: '/projects/llm_council_mockup.png',
       github: 'https://github.com/onkardehane/LLM-Councile_OD.git',
       live: 'https://github.com/onkardehane/LLM-Councile_OD.git'
+    },
+    {
+      title: t.projects.items[7].title,
+      description: t.projects.items[7].description,
+      tech: ["Angular", "TypeScript", "SCSS", "RxJS"],
+      icon: <Check size={48} />,
+      gradient: 'linear-gradient(135deg, #10b981, #3b82f6)',
+      emoji: '✅',
+      image: '/projects/todo_app_mockup.png',
+      github: 'https://github.com/onkardehane/TODO-app.git',
+      live: 'https://github.com/onkardehane/TODO-app.git'
     }
   ];
 

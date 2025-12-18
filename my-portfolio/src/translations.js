@@ -85,6 +85,10 @@ export const translations = {
                 {
                     title: "LLM Council",
                     description: "AI orchestration platform that sends queries to multiple LLMs (GPT-4, Gemini, Claude), utilizes a peer-review system for ranking, and generates a synthesized final response via a Chairman LLM."
+                },
+                {
+                    title: "Todo App",
+                    description: "A comprehensive task management system built with Angular, featuring reactive forms, state management, and an intuitive UI for efficient daily productivity."
                 }
             ]
         },
@@ -216,6 +220,10 @@ export const translations = {
                 {
                     title: "LLM Council",
                     description: "KI-Orchestrierungsplattform, die Anfragen an mehrere LLMs (GPT-4, Gemini, Claude) sendet, ein Peer-Review-System zur Bewertung nutzt und über ein Chairman-LLM eine zusammengefasste finale Antwort generiert."
+                },
+                {
+                    title: "Todo-App",
+                    description: "Ein umfassendes Aufgabenverwaltungssystem, entwickelt mit Angular, mit reaktiven Formularen, Zustandsmanagement und einer intuitiven Benutzeroberfläche für effiziente tägliche Produktivität."
                 }
             ]
         },
