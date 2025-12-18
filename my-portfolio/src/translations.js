@@ -81,6 +81,10 @@ export const translations = {
                 {
                     title: "E-Commerce Platform",
                     description: "Full-stack e-commerce solution with inventory management, payment processing, and admin dashboard. Generated $500K+ in transactions."
+                },
+                {
+                    title: "LLM Council",
+                    description: "AI orchestration platform that sends queries to multiple LLMs (GPT-4, Gemini, Claude), utilizes a peer-review system for ranking, and generates a synthesized final response via a Chairman LLM."
                 }
             ]
         },
@@ -208,6 +212,10 @@ export const translations = {
                 {
                     title: "E-Commerce-Plattform",
                     description: "Full-Stack-E-Commerce-Lösung mit Bestandsverwaltung, Zahlungsabwicklung und Admin-Dashboard. Generierte über 500.000 $ an Transaktionen."
+                },
+                {
+                    title: "LLM Council",
+                    description: "KI-Orchestrierungsplattform, die Anfragen an mehrere LLMs (GPT-4, Gemini, Claude) sendet, ein Peer-Review-System zur Bewertung nutzt und über ein Chairman-LLM eine zusammengefasste finale Antwort generiert."
                 }
             ]
         },

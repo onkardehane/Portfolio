@@ -238,6 +238,15 @@ const Portfolio = () => {
       icon: <ShoppingCart size={48} />,
       gradient: 'linear-gradient(135deg, #06b6d4, #0ea5e9)',
       emoji: '🛒'
+    },
+    {
+      title: t.projects.items[6].title,
+      description: t.projects.items[6].description,
+      tech: ["FastAPI", "React", "OpenRouter", "Python"],
+      icon: <Users size={48} />,
+      gradient: 'linear-gradient(135deg, #7c3aed, #4f46e5)',
+      emoji: '🧠',
+      image: '/projects/llm_council_mockup.png'
     }
   ];
 
@@ -1130,13 +1139,27 @@ const Portfolio = () => {
                 position: 'relative',
                 overflow: 'hidden'
               }}>
-                <div style={{
-                  fontSize: '4rem',
-                  animation: 'float 4s ease-in-out infinite',
-                  filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2))'
-                }}>
-                  {project.emoji}
-                </div>
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      opacity: 0.9,
+                      transition: 'all 0.3s ease'
+                    }}
+                  />
+                ) : (
+                  <div style={{
+                    fontSize: '4rem',
+                    animation: 'float 4s ease-in-out infinite',
+                    filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2))'
+                  }}>
+                    {project.emoji}
+                  </div>
+                )}
                 <div style={{
                   position: 'absolute',
                   bottom: 0,
