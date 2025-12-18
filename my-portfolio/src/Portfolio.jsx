@@ -197,7 +197,9 @@ const Portfolio = () => {
       tech: ["Angular", "Spring Boot", "PostgreSQL", "Stripe API"],
       icon: <Calendar size={48} />,
       gradient: 'linear-gradient(135deg, #6366f1, #a78bfa)',
-      emoji: '📅'
+      emoji: '📅',
+      github: 'https://github.com/onkardehane',
+      live: 'https://github.com/onkardehane'
     },
     {
       title: t.projects.items[1].title,
@@ -205,7 +207,9 @@ const Portfolio = () => {
       tech: ["Java", "Spring Boot", "Angular", "AWS"],
       icon: <GraduationCap size={48} />,
       gradient: 'linear-gradient(135deg, #8b5cf6, #c084fc)',
-      emoji: '🎓'
+      emoji: '🎓',
+      github: 'https://github.com/onkardehane',
+      live: 'https://github.com/onkardehane'
     },
     {
       title: t.projects.items[2].title,
@@ -213,7 +217,9 @@ const Portfolio = () => {
       tech: ["Node.js", "Socket.io", "React", "MongoDB"],
       icon: <MessageSquare size={48} />,
       gradient: 'linear-gradient(135deg, #ec4899, #f472b6)',
-      emoji: '💬'
+      emoji: '💬',
+      github: 'https://github.com/onkardehane',
+      live: 'https://github.com/onkardehane'
     },
     {
       title: t.projects.items[3].title,
@@ -221,7 +227,9 @@ const Portfolio = () => {
       tech: ["React", "D3.js", "Python", "Redis"],
       icon: <TrendingUp size={48} />,
       gradient: 'linear-gradient(135deg, #10b981, #34d399)',
-      emoji: '📊'
+      emoji: '📊',
+      github: 'https://github.com/onkardehane',
+      live: 'https://github.com/onkardehane'
     },
     {
       title: t.projects.items[4].title,
@@ -229,7 +237,9 @@ const Portfolio = () => {
       tech: ["Python", "FastAPI", "TensorFlow", "Docker"],
       icon: <Bot size={48} />,
       gradient: 'linear-gradient(135deg, #f59e0b, #fbbf24)',
-      emoji: '🤖'
+      emoji: '🤖',
+      github: 'https://github.com/onkardehane',
+      live: 'https://github.com/onkardehane'
     },
     {
       title: t.projects.items[5].title,
@@ -237,7 +247,9 @@ const Portfolio = () => {
       tech: ["MERN Stack", "Redux", "Stripe", "AWS"],
       icon: <ShoppingCart size={48} />,
       gradient: 'linear-gradient(135deg, #06b6d4, #0ea5e9)',
-      emoji: '🛒'
+      emoji: '🛒',
+      github: 'https://github.com/onkardehane',
+      live: 'https://github.com/onkardehane'
     },
     {
       title: t.projects.items[6].title,
@@ -246,7 +258,9 @@ const Portfolio = () => {
       icon: <Users size={48} />,
       gradient: 'linear-gradient(135deg, #7c3aed, #4f46e5)',
       emoji: '🧠',
-      image: '/projects/llm_council_mockup.png'
+      image: '/projects/llm_council_mockup.png',
+      github: 'https://github.com/onkardehane/LLM-Councile_OD.git',
+      live: 'https://github.com/onkardehane/LLM-Councile_OD.git'
     }
   ];
 
@@ -1213,20 +1227,22 @@ const Portfolio = () => {
 
                 {/* Project Links */}
                 <div style={{ display: 'flex', gap: '1rem' }}>
-                  <button style={{
-                    color: colors.primary,
-                    background: 'transparent',
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    fontSize: '0.95rem',
-                    fontWeight: '500',
-                    padding: '0.5rem 1rem',
-                    borderRadius: '8px',
-                    transition: 'all 0.3s ease'
-                  }}
+                  <button
+                    onClick={() => window.open(project.live, '_blank')}
+                    style={{
+                      color: colors.primary,
+                      background: 'transparent',
+                      border: 'none',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                      fontSize: '0.95rem',
+                      fontWeight: '500',
+                      padding: '0.5rem 1rem',
+                      borderRadius: '8px',
+                      transition: 'all 0.3s ease'
+                    }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.background = `${colors.primary}10`;
                       e.currentTarget.style.transform = 'translateX(5px)';
@@ -1237,20 +1253,22 @@ const Portfolio = () => {
                     }}>
                     <ExternalLink size={16} /> {t.projects.liveDemo}
                   </button>
-                  <button style={{
-                    color: colors.primary,
-                    background: 'transparent',
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    fontSize: '0.95rem',
-                    fontWeight: '500',
-                    padding: '0.5rem 1rem',
-                    borderRadius: '8px',
-                    transition: 'all 0.3s ease'
-                  }}
+                  <button
+                    onClick={() => window.open(project.github, '_blank')}
+                    style={{
+                      color: colors.primary,
+                      background: 'transparent',
+                      border: 'none',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                      fontSize: '0.95rem',
+                      fontWeight: '500',
+                      padding: '0.5rem 1rem',
+                      borderRadius: '8px',
+                      transition: 'all 0.3s ease'
+                    }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.background = `${colors.primary}10`;
                       e.currentTarget.style.transform = 'translateX(5px)';
