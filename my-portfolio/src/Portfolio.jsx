@@ -195,77 +195,6 @@ const Portfolio = () => {
     {
       title: t.projects.items[0].title,
       description: t.projects.items[0].description,
-      tech: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-      icon: <Terminal size={48} />,
-      gradient: 'linear-gradient(135deg, #2563eb, #3b82f6)',
-      emoji: '⌨️',
-      image: '/projects/vscode_portfolio_mockup.png',
-      github: 'https://github.com/onkardehane/vscode-portfolio.git',
-      live: 'https://vscode-portfolio-c9piv4y5c-onkar-dehanes-projects.vercel.app'
-    },
-    {
-      title: t.projects.items[1].title,
-      description: t.projects.items[1].description,
-      tech: ["Angular", "Spring Boot", "PostgreSQL", "Stripe API"],
-      icon: <Calendar size={48} />,
-      gradient: 'linear-gradient(135deg, #6366f1, #a78bfa)',
-      emoji: '📅',
-      github: 'https://github.com/onkardehane',
-      live: 'https://github.com/onkardehane'
-    },
-    {
-      title: t.projects.items[2].title,
-      description: t.projects.items[2].description,
-      tech: ["Java", "Spring Boot", "Angular", "AWS"],
-      icon: <GraduationCap size={48} />,
-      gradient: 'linear-gradient(135deg, #8b5cf6, #c084fc)',
-      emoji: '🎓',
-      github: 'https://github.com/onkardehane',
-      live: 'https://github.com/onkardehane'
-    },
-    {
-      title: t.projects.items[3].title,
-      description: t.projects.items[3].description,
-      tech: ["Node.js", "Socket.io", "React", "MongoDB"],
-      icon: <MessageSquare size={48} />,
-      gradient: 'linear-gradient(135deg, #ec4899, #f472b6)',
-      emoji: '💬',
-      github: 'https://github.com/onkardehane',
-      live: 'https://github.com/onkardehane'
-    },
-    {
-      title: t.projects.items[4].title,
-      description: t.projects.items[4].description,
-      tech: ["React", "D3.js", "Python", "Redis"],
-      icon: <TrendingUp size={48} />,
-      gradient: 'linear-gradient(135deg, #10b981, #34d399)',
-      emoji: '📊',
-      github: 'https://github.com/onkardehane',
-      live: 'https://github.com/onkardehane'
-    },
-    {
-      title: t.projects.items[5].title,
-      description: t.projects.items[5].description,
-      tech: ["Python", "FastAPI", "TensorFlow", "Docker"],
-      icon: <Bot size={48} />,
-      gradient: 'linear-gradient(135deg, #f59e0b, #fbbf24)',
-      emoji: '🤖',
-      github: 'https://github.com/onkardehane',
-      live: 'https://github.com/onkardehane'
-    },
-    {
-      title: t.projects.items[6].title,
-      description: t.projects.items[6].description,
-      tech: ["MERN Stack", "Redux", "Stripe", "AWS"],
-      icon: <ShoppingCart size={48} />,
-      gradient: 'linear-gradient(135deg, #06b6d4, #0ea5e9)',
-      emoji: '🛒',
-      github: 'https://github.com/onkardehane',
-      live: 'https://github.com/onkardehane'
-    },
-    {
-      title: t.projects.items[7].title,
-      description: t.projects.items[7].description,
       tech: ["FastAPI", "React", "OpenRouter", "Python"],
       icon: <Users size={48} />,
       gradient: 'linear-gradient(135deg, #7c3aed, #4f46e5)',
@@ -275,8 +204,8 @@ const Portfolio = () => {
       live: 'https://github.com/onkardehane/LLM-Councile_OD.git'
     },
     {
-      title: t.projects.items[8].title,
-      description: t.projects.items[8].description,
+      title: t.projects.items[1].title,
+      description: t.projects.items[1].description,
       tech: ["Angular", "TypeScript", "SCSS", "RxJS"],
       icon: <Check size={48} />,
       gradient: 'linear-gradient(135deg, #10b981, #3b82f6)',
@@ -284,6 +213,77 @@ const Portfolio = () => {
       image: '/projects/todo_app_mockup.png',
       github: 'https://github.com/onkardehane/TODO-app.git',
       live: 'https://github.com/onkardehane/TODO-app.git'
+    },
+    {
+      title: t.projects.items[2].title,
+      description: t.projects.items[2].description,
+      tech: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      icon: <Terminal size={48} />,
+      gradient: 'linear-gradient(135deg, #2563eb, #3b82f6)',
+      emoji: '⌨️',
+      image: '/projects/vscode_portfolio_mockup.png',
+      github: 'https://github.com/onkardehane/vscode-portfolio.git',
+      live: 'https://vscode-portfolio-tau-neon.vercel.app'
+    },
+    {
+      title: t.projects.items[3].title,
+      description: t.projects.items[3].description,
+      tech: ["Angular", "Spring Boot", "PostgreSQL", "Stripe API"],
+      icon: <Calendar size={48} />,
+      gradient: 'linear-gradient(135deg, #6366f1, #a78bfa)',
+      emoji: '📅',
+      github: 'https://github.com/onkardehane',
+      live: 'https://github.com/onkardehane'
+    },
+    {
+      title: t.projects.items[4].title,
+      description: t.projects.items[4].description,
+      tech: ["Java", "Spring Boot", "Angular", "AWS"],
+      icon: <GraduationCap size={48} />,
+      gradient: 'linear-gradient(135deg, #8b5cf6, #c084fc)',
+      emoji: '🎓',
+      github: 'https://github.com/onkardehane',
+      live: 'https://github.com/onkardehane'
+    },
+    {
+      title: t.projects.items[5].title,
+      description: t.projects.items[5].description,
+      tech: ["Node.js", "Socket.io", "React", "MongoDB"],
+      icon: <MessageSquare size={48} />,
+      gradient: 'linear-gradient(135deg, #ec4899, #f472b6)',
+      emoji: '💬',
+      github: 'https://github.com/onkardehane',
+      live: 'https://github.com/onkardehane'
+    },
+    {
+      title: t.projects.items[6].title,
+      description: t.projects.items[6].description,
+      tech: ["React", "D3.js", "Python", "Redis"],
+      icon: <TrendingUp size={48} />,
+      gradient: 'linear-gradient(135deg, #10b981, #34d399)',
+      emoji: '📊',
+      github: 'https://github.com/onkardehane',
+      live: 'https://github.com/onkardehane'
+    },
+    {
+      title: t.projects.items[7].title,
+      description: t.projects.items[7].description,
+      tech: ["Python", "FastAPI", "TensorFlow", "Docker"],
+      icon: <Bot size={48} />,
+      gradient: 'linear-gradient(135deg, #f59e0b, #fbbf24)',
+      emoji: '🤖',
+      github: 'https://github.com/onkardehane',
+      live: 'https://github.com/onkardehane'
+    },
+    {
+      title: t.projects.items[8].title,
+      description: t.projects.items[8].description,
+      tech: ["MERN Stack", "Redux", "Stripe", "AWS"],
+      icon: <ShoppingCart size={48} />,
+      gradient: 'linear-gradient(135deg, #06b6d4, #0ea5e9)',
+      emoji: '🛒',
+      github: 'https://github.com/onkardehane',
+      live: 'https://github.com/onkardehane'
     }
   ];
 

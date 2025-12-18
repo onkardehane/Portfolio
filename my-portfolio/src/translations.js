@@ -59,6 +59,14 @@ export const translations = {
             github: 'GitHub',
             items: [
                 {
+                    title: "LLM Council",
+                    description: "AI orchestration platform that sends queries to multiple LLMs (GPT-4, Gemini, Claude), utilizes a peer-review system for ranking, and generates a synthesized final response via a Chairman LLM."
+                },
+                {
+                    title: "Todo App",
+                    description: "A comprehensive task management system built with Angular, featuring reactive forms, state management, and an intuitive UI for efficient daily productivity."
+                },
+                {
                     title: "VS Code Portfolio",
                     description: "Interactive developer portfolio themed after Visual Studio Code. Features a functional terminal, dynamic file system, live GitHub stats integration, and multi-theme support (Dark+, Light+, Monokai)."
                 },
@@ -85,14 +93,6 @@ export const translations = {
                 {
                     title: "E-Commerce Platform",
                     description: "Full-stack e-commerce solution with inventory management, payment processing, and admin dashboard. Generated $500K+ in transactions."
-                },
-                {
-                    title: "LLM Council",
-                    description: "AI orchestration platform that sends queries to multiple LLMs (GPT-4, Gemini, Claude), utilizes a peer-review system for ranking, and generates a synthesized final response via a Chairman LLM."
-                },
-                {
-                    title: "Todo App",
-                    description: "A comprehensive task management system built with Angular, featuring reactive forms, state management, and an intuitive UI for efficient daily productivity."
                 }
             ]
         },
@@ -198,6 +198,14 @@ export const translations = {
             github: 'GitHub',
             items: [
                 {
+                    title: "LLM Council",
+                    description: "KI-Orchestrierungsplattform, die Anfragen an mehrere LLMs (GPT-4, Gemini, Claude) sendet, ein Peer-Review-System zur Bewertung nutzt und über ein Chairman-LLM eine zusammengefasste finale Antwort generiert."
+                },
+                {
+                    title: "Todo-App",
+                    description: "Ein umfassendes Aufgabenverwaltungssystem, entwickelt mit Angular, mit reaktiven Formularen, Zustandsmanagement und einer intuitiven Benutzeroberfläche für effiziente tägliche Produktivität."
+                },
+                {
                     title: "VS Code Portfolio",
                     description: "Interaktives Entwickler-Portfolio im Design von Visual Studio Code. Verfügt über ein funktionales Terminal, ein dynamisches Dateisystem, Live-GitHub-Statistiken und Unterstützung für mehrere Themes (Dark+, Light+, Monokai)."
                 },
@@ -224,14 +232,6 @@ export const translations = {
                 {
                     title: "E-Commerce-Plattform",
                     description: "Full-Stack-E-Commerce-Lösung mit Bestandsverwaltung, Zahlungsabwicklung und Admin-Dashboard. Generierte über 500.000 $ an Transaktionen."
-                },
-                {
-                    title: "LLM Council",
-                    description: "KI-Orchestrierungsplattform, die Anfragen an mehrere LLMs (GPT-4, Gemini, Claude) sendet, ein Peer-Review-System zur Bewertung nutzt und über ein Chairman-LLM eine zusammengefasste finale Antwort generiert."
-                },
-                {
-                    title: "Todo-App",
-                    description: "Ein umfassendes Aufgabenverwaltungssystem, entwickelt mit Angular, mit reaktiven Formularen, Zustandsmanagement und einer intuitiven Benutzeroberfläche für effiziente tägliche Produktivität."
                 }
             ]
         },
