@@ -50,7 +50,8 @@ export const translations = {
             frontend: 'Frontend Development',
             backend: 'Backend Development',
             database: 'Database & Cloud',
-            tools: 'Tools & Practices'
+            tools: 'Tools & Practices',
+            aitools: 'AI Tools & Models'
         },
         projects: {
             title: 'Featured Projects',
@@ -189,7 +190,8 @@ export const translations = {
             frontend: 'Frontend-Entwicklung',
             backend: 'Backend-Entwicklung',
             database: 'Datenbank & Cloud',
-            tools: 'Tools & Methoden'
+            tools: 'Tools & Methoden',
+            aitools: 'KI-Tools & Modelle'
         },
         projects: {
             title: 'Ausgewählte Projekte',
